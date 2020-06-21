@@ -4,10 +4,14 @@ import TimeManageSection from '../time-manage/time-manage-section.component';
 
 import { Container } from './manage-your-time-preview.styles.js';
 
-const ManageYourTimeContainer = () => (
-  <Container>
-    <TimeManageSection />
-  </Container>
+import { ManageYourTimeProvider } from '../../contexts/manage-your-time-preview/manage-your-time.context';
+
+const ManageYourTimePreview = () => (
+  <ManageYourTimeProvider>
+    <Container>
+      <TimeManageSection />
+    </Container>
+  </ManageYourTimeProvider>
 );
 
-export default ManageYourTimeContainer;
+export default ManageYourTimePreview;

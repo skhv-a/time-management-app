@@ -5,14 +5,16 @@ import {
   Header,
   LogoContainer,
   LogoTitle,
-  SearchContainer,
-  Search,
   GoalsForTodayContainer,
   GoalsForTodayHeader,
   GoalsForTodayTitle,
   AddGoalContainer,
   AddButton,
+  Goals,
+  GoalItem,
 } from './time-manage-section.styles.js';
+
+import SearchBox from '../search-box/search-box.component';
 
 const TimeManageSection = () => {
   return (
@@ -22,13 +24,14 @@ const TimeManageSection = () => {
           <LogoTitle>Manage your time</LogoTitle>
         </LogoContainer>
       </Header>
-      <SearchContainer>
-        <Search placeholder={'search...'} />
-      </SearchContainer>
+      <SearchBox />
       <GoalsForTodayContainer>
         <GoalsForTodayHeader>
           <GoalsForTodayTitle>Your goals for today</GoalsForTodayTitle>
         </GoalsForTodayHeader>
+        <Goals>
+          <GoalItem>Купить молоко</GoalItem>
+        </Goals>
         <AddGoalContainer>
           <AddButton />
         </AddGoalContainer>

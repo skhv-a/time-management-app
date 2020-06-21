@@ -1,28 +1,16 @@
 import React, { createContext, useReducer } from 'react';
 
+import INITIAL_STATE from '../../reducers/homepage/homepage.initial-state';
+
+import reducer from '../../reducers/homepage/homepage.reducer.js';
+
 export const HomepageContext = createContext();
 
 export const HomepageProvider = ({ children }) => {
-  const initialState = {
-    canRender: false,
-  };
-  const actions = {
-    CAN_RENDER: 'CAN_RENDER',
-  };
-
-  const reduser = (state, action) => {
-    switch (action.type) {
-      case actions.CAN_RENDER:
-        return { canRender: !state.canRender };
-      default:
-        return state;
-    }
-  };
-
-  const [state, dispatch] = useReducer(reduser, initialState);
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   return (
-    <HomepageContext.Provider value={{ state, dispatch, actions }}>
+    <HomepageContext.Provider value={{ state, dispatch }}>
       {children}
     </HomepageContext.Provider>
   );

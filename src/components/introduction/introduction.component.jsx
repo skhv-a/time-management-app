@@ -9,16 +9,16 @@ import {
   StartButton,
 } from './introduction.styles.js';
 
+import { canRender } from '../../reducers/homepage/homepage.actions';
+
 const Introduction = () => {
   const [isClicked, setClicked] = useState(false);
-  const { actions, dispatch } = useContext(HomepageContext);
+  const { dispatch } = useContext(HomepageContext);
 
   return (
     <IntroductionContainer
       isClicked={isClicked}
-      onAnimationEnd={() =>
-        isClicked ? dispatch({ type: actions.CAN_RENDER }) : null
-      }
+      onAnimationEnd={() => (isClicked ? dispatch(canRender) : null)}
     >
       <Title>Be productive today!</Title>
       <StyledLogo />

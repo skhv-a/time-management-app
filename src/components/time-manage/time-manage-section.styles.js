@@ -23,6 +23,8 @@ const flexCenter = css`
 export const TimeManageSectionContainer = styled.div`
   width: 25%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
   position: absolute;
 
   ${appearAnimation}
@@ -46,7 +48,7 @@ export const LogoContainer = styled.div`
 
 export const LogoTitle = styled.span`
   font-family: Roboto-Medium;
-  font-size: min(2vw, 34px);
+  font-size: min(2vw, 32px);
   padding: 0 20px;
 
   color: #ffffff;
@@ -54,29 +56,12 @@ export const LogoTitle = styled.span`
   text-transform: uppercase;
 `;
 
-export const SearchContainer = styled.div`
-  width: 100%;
-  height: 140px;
-  ${flexCenter}
-`;
-
-export const Search = styled.input`
-  max-width: 300px;
-  height: 30px;
-  outline: none;
-  border-radius: 25px;
-  padding: 25px;
-  border: none;
-
-  font-family: RobotoCondensed-Light;
-  font-size: 25.5px;
-  color: #595959;
-  text-align: left;
-`;
-
 export const GoalsForTodayContainer = styled.div`
   width: 100%;
-  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const GoalsForTodayHeader = styled.div`
@@ -94,13 +79,40 @@ export const GoalsForTodayTitle = styled.span`
   text-transform: uppercase;
 `;
 
+export const Goals = styled.div`
+  margin: 0 auto;
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  flex: 1;
+  margin: 35px 0;
+  overflow: scroll;
+`;
+
+export const GoalItem = styled.div`
+  width: 80%;
+  background-color: #272187;
+  border-radius: 26px;
+  font-family: Roboto-Regular;
+  color: white;
+  text-align: left;
+  font-size: min(2vw, 30px);
+  padding: 25px;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
 export const AddGoalContainer = styled.div`
-  position: absolute;
   bottom: 0;
   width: 100%;
   height: 120px;
   background-color: #211c74;
   ${flexCenter}
+  align-self: flex-end;
 `;
 
 export const AddButton = styled(addButtonSVG)`
