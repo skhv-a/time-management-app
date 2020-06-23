@@ -10,7 +10,7 @@ export const ManageYourTimeProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   return (
-    <ManageYourTimeContext.Provider value={(state, dispatch)}>
+    <ManageYourTimeContext.Provider value={{ state, dispatch }}>
       {children}
     </ManageYourTimeContext.Provider>
   );

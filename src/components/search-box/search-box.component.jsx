@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { SearchContainer, Search } from './search-box.styles';
+import { SearchContainer } from './search-box.styles';
+import { CustomInput } from '../custom-input/custom-input.styles';
 
 const SearchBox = () => (
   <SearchContainer>
-    <Search placeholder={'search...'} />
+    <CustomInput searchInput placeholder="search..."></CustomInput>
   </SearchContainer>
 );
 

@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { ReactComponent as Logo } from '../../assets/clock.svg';
+import { CustomButton } from '../custom-button/custom-button.styles';
 
 const apearAnimation = css`
   -webkit-animation: scale-up-center 0.5s ease-out both;
@@ -38,23 +39,6 @@ export const StyledLogo = styled(Logo)`
   width: 100px;
   height: 100px;
   fill: white;
-`;
-
-export const StartButton = styled.button`
-  font-family: Roboto-Regular;
-
-  cursor: pointer;
-  outline: none;
-
-  width: 250px;
-  height: 85px;
-  background-color: #ffa500;
-  color: #ffffff;
-  text-transform: uppercase;
-
-  border: none;
-  border-radius: 25px;
-  font-size: 33px;
 `;
 
 const addDisapearAnimation = ({ isClicked }) => {
@@ -96,7 +80,7 @@ export const IntroductionContainer = styled.div`
   align-items: center;
   ${addDisapearAnimation}
 
-  ${Title}, ${StyledLogo}, ${StartButton} {
+  ${Title}, ${StyledLogo}, ${CustomButton} {
     ${apearAnimation}
   }
 

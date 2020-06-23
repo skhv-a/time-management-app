@@ -5,16 +5,10 @@ import {
   Header,
   LogoContainer,
   LogoTitle,
-  GoalsForTodayContainer,
-  GoalsForTodayHeader,
-  GoalsForTodayTitle,
-  AddGoalContainer,
-  AddButton,
-  Goals,
-  GoalItem,
 } from './time-manage-section.styles.js';
 
 import SearchBox from '../search-box/search-box.component';
+import GoalsForToday from '../goals-for-today/goals-for-today.component';
 
 const TimeManageSection = () => {
   return (
@@ -25,17 +19,7 @@ const TimeManageSection = () => {
         </LogoContainer>
       </Header>
       <SearchBox />
-      <GoalsForTodayContainer>
-        <GoalsForTodayHeader>
-          <GoalsForTodayTitle>Your goals for today</GoalsForTodayTitle>
-        </GoalsForTodayHeader>
-        <Goals>
-          <GoalItem>Купить молоко</GoalItem>
-        </Goals>
-        <AddGoalContainer>
-          <AddButton />
-        </AddGoalContainer>
-      </GoalsForTodayContainer>
+      <GoalsForToday />
     </TimeManageSectionContainer>
   );
 };

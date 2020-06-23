@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import TimeManageSection from '../time-manage/time-manage-section.component';
+import TimeManageSection from '../time-manage-section/time-manage-section.component';
 
 import { Container } from './manage-your-time-preview.styles.js';
 
-import { ManageYourTimeProvider } from '../../contexts/manage-your-time-preview/manage-your-time.context';
+import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
-const ManageYourTimePreview = () => (
-  <ManageYourTimeProvider>
+import AddGoalModal from '../add-goal-modal/add-goal-modal.component';
+
+const ManageYourTimePreview = () => {
+  const {
+    state: { isHidden },
+  } = useContext(ManageYourTimeContext);
+  return (
     <Container>
       <TimeManageSection />
+      {!isHidden ? <AddGoalModal /> : null}
     </Container>
-  </ManageYourTimeProvider>
-);
+  );
+};
 
 export default ManageYourTimePreview;

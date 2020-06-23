@@ -6,8 +6,8 @@ import {
   IntroductionContainer,
   Title,
   StyledLogo,
-  StartButton,
 } from './introduction.styles.js';
+import { CustomButton } from '../custom-button/custom-button.styles';
 
 import { canRender } from '../../reducers/homepage/homepage.actions';
 
@@ -22,9 +22,9 @@ const Introduction = () => {
     >
       <Title>Be productive today!</Title>
       <StyledLogo />
-      <StartButton onClick={() => setClicked(!isClicked)}>
+      <CustomButton startButton onClick={() => setClicked(!isClicked)}>
         Lets work
-      </StartButton>
+      </CustomButton>
     </IntroductionContainer>
   );
 };
