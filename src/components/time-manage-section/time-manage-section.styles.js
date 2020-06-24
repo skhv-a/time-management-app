@@ -1,16 +1,5 @@
 import styled, { css } from 'styled-components';
-
-const appearAnimation = css`
-  animation: extend 0.5s ease-in both;
-  @keyframes extend {
-    0% {
-      top: 100vh;
-    }
-    100% {
-      top: 0px;
-    }
-  }
-`;
+import { slideFromBottonAnimation } from '../../animations/animations';
 
 const flexCenter = css`
   display: flex;
@@ -25,7 +14,7 @@ export const TimeManageSectionContainer = styled.div`
   flex-direction: column;
   position: absolute;
 
-  ${appearAnimation}
+  ${slideFromBottonAnimation}
 `;
 
 export const Header = styled.div`

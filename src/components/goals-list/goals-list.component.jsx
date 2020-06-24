@@ -1,27 +1,30 @@
-import React, { useContext, memo } from 'react';
+import React, { useContext, useMemo } from 'react';
 
-import { Goals } from './goals-list.styles';
+import { Goals, NothingMessage } from './goals-list.styles';
 import GoalItem from '../goal-item/goal-item.component';
 
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
 let id = 0;
 
-const GoalsList = memo(({ oldProps, newProps }) => {
+const GoalsList = ({ oldProps, newProps }) => {
   const {
     state: { goals },
   } = useContext(ManageYourTimeContext);
 
-  if (oldProps.length !== newProps.length) {
-    console.log('rerender');
+  return useMemo(() => {
+    console.log('re');
+
     return (
       <Goals>
-        {goals.map((goal) => (
-          <GoalItem key={++id} {...goal} />
-        ))}
+        {goals.length ? (
+          goals.map((goal) => <GoalItem key={++id} {...goal} />)
+        ) : (
+          <NothingMessage>Nothing for today</NothingMessage>
+        )}
       </Goals>
     );
-  }
-});
+  }, [goals]);
+};
 
 export default GoalsList;

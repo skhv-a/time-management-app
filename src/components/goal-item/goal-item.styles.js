@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { scaleUpAnimation } from '../../animations/animations';
 
 export const Goal = styled.div`
   min-height: 60px;
@@ -20,4 +21,5 @@ export const Goal = styled.div`
   cursor: pointer;
 
   overflow-wrap: break-word;
+  ${scaleUpAnimation}
 `;

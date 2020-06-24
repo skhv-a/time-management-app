@@ -39,7 +39,15 @@ const AddGoalModal = () => {
   return (
     <AddGoalModalContainer>
       <Overlay onClick={() => dispatch(toggleModal)} />
-      <ModalForm onSubmit={handleSubmit}>
+      <ModalForm
+        onSubmit={handleSubmit}
+        onKeyUp={(e) => {
+          if (e.keyCode === 13) {
+            e.preventDefault();
+            CustomButton.click();
+          }
+        }}
+      >
         <CustomInput
           addModalInput
           placeholder="Title"
