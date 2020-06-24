@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
 export const Goal = styled.div`
+  min-height: 60px;
   width: 80%;
 
   display: flex;
   justify-content: center;
   align-self: center;
+  align-items: center;
 
   background-color: #272187;
   border-radius: 26px;
-  padding: 25px;
+  padding: 0 25px;
+  margin: 25px 0;
 
   font-family: Roboto-Regular;
   color: white;

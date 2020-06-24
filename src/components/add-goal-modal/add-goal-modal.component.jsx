@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 
 import {
   AddGoalModalContainer,
   ModalForm,
-  BlackTransparent,
+  Overlay,
 } from './add-goal-modal.styles';
 
 import {
@@ -36,13 +36,9 @@ const AddGoalModal = () => {
     dispatch(addGoal(goal));
   };
 
-  useEffect(() => {
-    console.log(goal);
-  }, [goal]);
-
   return (
     <AddGoalModalContainer>
-      <BlackTransparent onClick={() => dispatch(toggleModal)} />
+      <Overlay onClick={() => dispatch(toggleModal)} />
       <ModalForm onSubmit={handleSubmit}>
         <CustomInput
           addModalInput
