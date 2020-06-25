@@ -7,7 +7,7 @@ import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/m
 
 let id = 0;
 
-const GoalsList = ({ oldProps, newProps }) => {
+const GoalsList = () => {
   const {
     state: { goals },
   } = useContext(ManageYourTimeContext);
@@ -18,7 +18,9 @@ const GoalsList = ({ oldProps, newProps }) => {
     return (
       <Goals>
         {goals.length ? (
-          goals.map((goal) => <GoalItem key={++id} {...goal} />)
+          goals.map((goal) => {
+            return <GoalItem key={++id} {...goal} />;
+          })
         ) : (
           <NothingMessage>Nothing for today</NothingMessage>
         )}
