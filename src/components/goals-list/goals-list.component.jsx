@@ -5,8 +5,6 @@ import GoalItem from '../goal-item/goal-item.component';
 
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
-let id = 0;
-
 const GoalsList = () => {
   const {
     state: { goals },
@@ -19,7 +17,7 @@ const GoalsList = () => {
       <Goals>
         {goals.length ? (
           goals.map((goal) => {
-            return <GoalItem key={++id} {...goal} />;
+            return <GoalItem key={goal.id} {...goal} />;
           })
         ) : (
           <NothingMessage>Nothing for today</NothingMessage>
