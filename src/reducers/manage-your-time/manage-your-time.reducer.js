@@ -12,6 +12,11 @@ const reducer = (state, action) => {
         ...state,
         isHidden: !state.isHidden,
       };
+    case types.SEARCH_GOAL:
+      return {
+        ...state,
+        searchedGoals: [...action.payload],
+      };
     default:
       return state;
   }

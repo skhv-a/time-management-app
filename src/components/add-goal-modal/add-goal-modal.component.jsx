@@ -15,7 +15,7 @@ import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/m
 import { CustomInput } from '../custom-input/custom-input.styles';
 import { CustomButton } from '../custom-button/custom-button.styles';
 
-// let id = 0;
+let id = 0;
 
 const AddGoalModal = () => {
   const { dispatch } = useContext(ManageYourTimeContext);
@@ -23,7 +23,7 @@ const AddGoalModal = () => {
     title: '',
     description: '',
     isDone: false,
-    // id: id++,
+    id: id++,
   });
 
   const handleTitleInput = (e) => {

@@ -7,16 +7,16 @@ import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/m
 
 const GoalsList = () => {
   const {
-    state: { goals },
+    state: { goals, searchedGoals },
   } = useContext(ManageYourTimeContext);
 
-  return useMemo(() => {
-    console.log('re');
+  //! CREATE SEARCH FUNC!!!
 
+  return useMemo(() => {
     return (
       <Goals>
         {goals.length ? (
-          goals.map((goal) => {
+          searchedGoals.map((goal) => {
             return <GoalItem key={goal.id} {...goal} />;
           })
         ) : (
@@ -24,7 +24,7 @@ const GoalsList = () => {
         )}
       </Goals>
     );
-  }, [goals]);
+  }, [goals, searchedGoals]);
 };
 
 export default GoalsList;
