@@ -18,7 +18,7 @@ const SearchBox = () => {
 
   const handleSearchInput = (e) => {
     const searchedGoals = goals.filter((goal) =>
-      goal.title.includes(e.target.value)
+      goal.title.includes(e.target.value.toLowerCase().trim())
     );
 
     dispatch(searchGoal(searchedGoals));

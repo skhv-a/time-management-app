@@ -5,7 +5,7 @@ import GoalItem from '../goal-item/goal-item.component';
 
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
-const GoalsList = () => {
+const GoalsList = (props) => {
   const {
     state: { goals, searchedGoals },
   } = useContext(ManageYourTimeContext);
@@ -20,7 +20,9 @@ const GoalsList = () => {
             //if nothing has found from searchedGoals display "Nothing has found" message
 
             searchedGoals.map((goal) => {
-              return <GoalItem key={goal.id} {...goal} />;
+              return (
+                <GoalItem key={goal.id} {...goal} otherProps={{ ...props }} />
+              );
             })
           ) : (
             <NothingMessage hasFound>Nothing has found</NothingMessage>
@@ -30,7 +32,7 @@ const GoalsList = () => {
         )}
       </Goals>
     );
-  }, [goals, searchedGoals]);
+  }, [goals, searchedGoals, props]);
 };
 
 export default GoalsList;

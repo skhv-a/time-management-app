@@ -23,3 +23,36 @@ export const Goal = styled.div`
   overflow-wrap: break-word;
   ${scaleUpAnimation}
 `;
+
+export const InProcessGoalItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 50px;
+  cursor: pointer;
+
+  ${scaleUpAnimation}
+`;
+
+export const GoalTitle = styled.div`
+  width: 100%;
+  height: 60px;
+  background-color: #3b3dc5;
+  border-radius: 26px 26px 0 0;
+  padding-left: 25px;
+  font-family: Roboto-Regular;
+  font-size: 25px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+`;
+
+export const GoalDescription = styled.div`
+  background-color: white;
+  width: 100%;
+  padding: 25px;
+  border-radius: 0 0 26px 26px;
+  font-family: RobotoCondensed-Regular;
+  font-size: 25px;
+  color: #494949;
+`;

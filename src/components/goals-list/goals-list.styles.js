@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { scaleUpAnimation } from '../../animations/animations';
+import GoalItem from '../goal-item/goal-item.component';
 
 const setProps = (props) => {
   if (props.hasFound) {
@@ -26,4 +27,8 @@ export const NothingMessage = styled.span`
   margin: auto auto;
 
   ${setProps}
+`;
+
+export const InProcessGoalItem = styled(GoalItem)`
+  background-color: red;
 `;
