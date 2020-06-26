@@ -1,5 +1,5 @@
 export const INITIAL_STATE = {
-  canRender: true, //!SET TO FALSE
+  canRender: false, //!SET TO FALSE
 };
 
 export default INITIAL_STATE;

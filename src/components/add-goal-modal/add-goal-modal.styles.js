@@ -5,7 +5,9 @@ export const AddGoalModalContainer = styled.div`
   width: 100vw;
   height: 100vh;
 
+  position: absolute;
   z-index: 1;
+
   display: flex;
   justify-content: center;
   align-items: center;

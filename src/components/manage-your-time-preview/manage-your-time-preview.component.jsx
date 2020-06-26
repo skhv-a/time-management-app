@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 
 import TimeManageSection from '../../sections/time-manage/time-manage.component';
+import InProcessSection from '../../sections/in-process/in-process.component';
+import DoneSection from '../../sections/done/done.component';
 
 import { Container } from './manage-your-time-preview.styles.js';
 
@@ -15,6 +17,8 @@ const ManageYourTimePreview = () => {
   return (
     <Container>
       <TimeManageSection />
+      <InProcessSection />
+      <DoneSection />
       {!isHidden ? <AddGoalModal /> : null}
     </Container>
   );

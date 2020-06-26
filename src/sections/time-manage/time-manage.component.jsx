@@ -1,23 +1,15 @@
 import React from 'react';
 
-import {
-  TimeManageSectionContainer,
-  Header,
-  LogoContainer,
-  LogoTitle,
-} from './time-manage.styles.js';
+import { TimeManageSectionContainer } from './time-manage.styles.js';
 
 import SearchBox from '../../components/search-box/search-box.component';
 import GoalsForToday from '../../components/goals-for-today/goals-for-today.component';
+import CustomHeader from '../../components/custom-header/custom-header.component.jsx';
 
 const TimeManageSection = () => {
   return (
     <TimeManageSectionContainer>
-      <Header>
-        <LogoContainer>
-          <LogoTitle>Manage your time</LogoTitle>
-        </LogoContainer>
-      </Header>
+      <CustomHeader mainLogo>Manage your time</CustomHeader>
       <SearchBox />
       <GoalsForToday />
     </TimeManageSectionContainer>
