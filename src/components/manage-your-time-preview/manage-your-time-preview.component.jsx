@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import TimeManageSection from '../time-manage-section/time-manage-section.component';
+import TimeManageSection from '../../sections/time-manage/time-manage.component';
 
 import { Container } from './manage-your-time-preview.styles.js';
 

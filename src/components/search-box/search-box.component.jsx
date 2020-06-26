@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { SearchContainer } from './search-box.styles';
 import { CustomInput } from '../custom-input/custom-input.styles';
@@ -11,6 +11,10 @@ const SearchBox = () => {
     dispatch,
     state: { goals },
   } = useContext(ManageYourTimeContext);
+
+  useEffect(() => {
+    dispatch(searchGoal(goals));
+  }, [goals, dispatch]);
 
   const handleSearchInput = (e) => {
     const searchedGoals = goals.filter((goal) =>

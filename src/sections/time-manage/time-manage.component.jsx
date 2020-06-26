@@ -5,10 +5,10 @@ import {
   Header,
   LogoContainer,
   LogoTitle,
-} from './time-manage-section.styles.js';
+} from './time-manage.styles.js';
 
-import SearchBox from '../search-box/search-box.component';
-import GoalsForToday from '../goals-for-today/goals-for-today.component';
+import SearchBox from '../../components/search-box/search-box.component';
+import GoalsForToday from '../../components/goals-for-today/goals-for-today.component';
 
 const TimeManageSection = () => {
   return (

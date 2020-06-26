@@ -10,15 +10,21 @@ const GoalsList = () => {
     state: { goals, searchedGoals },
   } = useContext(ManageYourTimeContext);
 
-  //! CREATE SEARCH FUNC!!!
-
   return useMemo(() => {
     return (
       <Goals>
         {goals.length ? (
-          searchedGoals.map((goal) => {
-            return <GoalItem key={goal.id} {...goal} />;
-          })
+          //if goals don't have something display nothing for today
+
+          searchedGoals.length ? (
+            //if nothing has found from searchedGoals display "Nothing has found" message
+
+            searchedGoals.map((goal) => {
+              return <GoalItem key={goal.id} {...goal} />;
+            })
+          ) : (
+            <NothingMessage hasFound>Nothing has found</NothingMessage>
+          )
         ) : (
           <NothingMessage>Nothing for today</NothingMessage>
         )}

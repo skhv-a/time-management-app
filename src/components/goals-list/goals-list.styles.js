@@ -1,4 +1,11 @@
 import styled from 'styled-components';
+import { scaleUpAnimation } from '../../animations/animations';
+
+const setProps = (props) => {
+  if (props.hasFound) {
+    return scaleUpAnimation;
+  }
+};
 
 export const Goals = styled.div`
   margin: 0 auto;
@@ -17,4 +24,6 @@ export const NothingMessage = styled.span`
   font-size: min(1.5vw, 28px);
   color: white;
   margin: auto auto;
+
+  ${setProps}
 `;
