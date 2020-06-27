@@ -22,16 +22,21 @@ export const Goal = styled.div`
 
   overflow-wrap: break-word;
   ${scaleUpAnimation}
+
+  &:first-child {
+    margin-top: 50px;
+  }
 `;
 
 export const InProcessGoalItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  margin: 50px;
-  cursor: pointer;
+  width: 80%;
 
-  ${scaleUpAnimation}
+  display: flex;
+  justify-self: center;
+
+  flex-direction: column;
+
+  cursor: pointer;
 `;
 
 export const GoalTitle = styled.div`

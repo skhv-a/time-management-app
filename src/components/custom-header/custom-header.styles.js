@@ -46,6 +46,9 @@ const setLogoContainerStylesFromProps = ({ props }) => {
 export const CustomHeaderContainer = styled.div`
   width: 100%;
   height: 100px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;

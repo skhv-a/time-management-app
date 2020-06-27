@@ -18,6 +18,7 @@ import { CustomButton } from '../custom-button/custom-button.styles';
 let id = 0;
 
 const AddGoalModal = () => {
+  const [isClicked, setClicked] = useState(false);
   const { dispatch } = useContext(ManageYourTimeContext);
   const [goal, setGoal] = useState({
     title: '',
@@ -27,7 +28,7 @@ const AddGoalModal = () => {
   });
 
   const handleTitleInput = (e) => {
-    setGoal({ ...goal, title: e.target.value });
+    setGoal({ ...goal, title: e.target.value.toLowerCase() });
   };
   const handleDescriptionInput = (e) => {
     setGoal({ ...goal, description: e.target.value });
@@ -35,13 +36,18 @@ const AddGoalModal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     dispatch(toggleModal);
     dispatch(addGoal(goal));
   };
 
   return (
     <AddGoalModalContainer>
-      <Overlay onClick={() => dispatch(toggleModal)} />
+      <Overlay
+        onClick={() => {
+          dispatch(toggleModal);
+        }}
+      />
       <ModalForm
         onSubmit={handleSubmit}
         onKeyUp={(e) => {
@@ -50,6 +56,7 @@ const AddGoalModal = () => {
             CustomButton.click();
           }
         }}
+        isCliked={isClicked}
       >
         <CustomInput
           addModalInput

@@ -5,7 +5,7 @@ import { ReactComponent as addButtonSVG } from '../../assets/add.svg';
 export const AddGoalContainer = styled.div`
   bottom: 0;
   width: 100%;
-  height: 120px;
+  height: 80px;
   background-color: #211c74;
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@ export const AddGoalContainer = styled.div`
 `;
 
 export const AddGoalButton = styled(addButtonSVG)`
-  width: 90px;
-  height: 90px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
 `;

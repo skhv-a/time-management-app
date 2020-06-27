@@ -12,7 +12,7 @@ const GoalsList = (props) => {
 
   return useMemo(() => {
     return (
-      <Goals>
+      <Goals whichComponent={props}>
         {goals.length ? (
           //if goals don't have something display nothing for today
 
@@ -25,10 +25,14 @@ const GoalsList = (props) => {
               );
             })
           ) : (
-            <NothingMessage hasFound>Nothing has found</NothingMessage>
+            <NothingMessage hasFound whichComponent={props}>
+              Nothing has found
+            </NothingMessage>
           )
         ) : (
-          <NothingMessage>Nothing for today</NothingMessage>
+          <NothingMessage whichComponent={props}>
+            Nothing for today
+          </NothingMessage>
         )}
       </Goals>
     );
