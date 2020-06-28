@@ -55,6 +55,11 @@ export const CustomButton = styled.button`
   border: none;
   outline: none;
   border-radius: 25px;
+  opacity: 1;
 
   ${setStyles}
+  &:disabled {
+    opacity: 0.7;
+  }
+  transition: opacity 0.3s;
 `;

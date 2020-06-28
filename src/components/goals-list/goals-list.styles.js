@@ -13,7 +13,7 @@ const setStylesToGoalsContainer = ({ whichComponent }) => {
 
       display: grid;
       justify-content: center;
-      grid-template-columns: repeat(auto-fit, 240px);
+      grid-template-columns: repeat(auto-fit, 300px);
       grid-auto-rows: min-content;
       row-gap: 35px;
     `;
@@ -41,8 +41,14 @@ export const Goals = styled.div`
 
 const nothingInProcessMessageStyles = css`
   font-family: Roboto-Regular;
-  font-size: min(2vw, 28px);
-  height: calc(95vh - 100px);
+  font-size: min(1.7vw, 25px);
+  min-height: 60px;
+
+  padding: 25px;
+  border-radius: 26px;
+  text-align: center;
+
+  background-color: #3b3dc5;
 `;
 
 const setStylesToNothingMessage = ({

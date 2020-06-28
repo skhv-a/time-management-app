@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { slideFromBottonAnimation } from '../../animations/animations';
 
 export const InProcessSectionContainer = styled.div`
-  width: 60%;
+  width: 55%;
   height: 100vh;
   position: absolute;
 

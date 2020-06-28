@@ -11,6 +11,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         isHidden: !state.isHidden,
+        modalType: action.payload,
       };
     case types.SEARCH_GOAL:
       return {

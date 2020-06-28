@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { slideFromBottonAnimation } from '../../animations/animations';
 
 export const DoneSectionContainer = styled.div`
-  width: 15%;
+  width: 20%;
   height: 100vh;
   position: absolute;
 
@@ -10,7 +10,7 @@ export const DoneSectionContainer = styled.div`
 
   background-color: #2a2ba1;
 
-  margin-left: 85%;
+  margin-left: 80%;
 
   ${slideFromBottonAnimation};
 `;

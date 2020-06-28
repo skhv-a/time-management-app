@@ -21,7 +21,7 @@ const GoalsList = (props) => {
 
             searchedGoals.map((goal) => {
               return (
-                <GoalItem key={goal.id} {...goal} otherProps={{ ...props }} />
+                <GoalItem key={goal.id} otherProps={{ ...props }} {...goal} />
               );
             })
           ) : (

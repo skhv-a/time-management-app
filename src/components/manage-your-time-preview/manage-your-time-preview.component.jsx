@@ -8,18 +8,19 @@ import { Container } from './manage-your-time-preview.styles.js';
 
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
-import AddGoalModal from '../add-goal-modal/add-goal-modal.component';
+import CustomModal from '../custom-modal/custom-modal.component';
 
 const ManageYourTimePreview = () => {
   const {
-    state: { isHidden },
+    state: { modalType, isHidden },
   } = useContext(ManageYourTimeContext);
+
   return (
     <Container>
       <TimeManageSection />
       <InProcessSection />
       <DoneSection />
-      {!isHidden ? <AddGoalModal /> : null}
+      {!isHidden ? <CustomModal modalType={{ ...modalType }} /> : null}
     </Container>
   );
 };

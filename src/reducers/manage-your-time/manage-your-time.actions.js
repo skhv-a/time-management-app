@@ -5,9 +5,10 @@ export const addGoal = (item) => ({
   payload: item,
 });
 
-export const toggleModal = {
+export const toggleModal = (props) => ({
   type: types.TOGGLE_MODAL,
-};
+  payload: props,
+});
 
 export const searchGoal = (item) => ({
   type: types.SEARCH_GOAL,
