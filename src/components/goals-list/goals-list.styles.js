@@ -4,13 +4,11 @@ import { scaleUpAnimation } from '../../animations/animations';
 //Goals
 
 const setStylesToGoalsContainer = ({ whichComponent }) => {
-  if (whichComponent.inProcess) {
+  if (whichComponent === 'inProcess' || whichComponent === 'done') {
     return css`
       width: 95%;
       height: calc(100% - 100px - 5vh);
-
       margin-top: 5vh;
-
       display: grid;
       justify-content: center;
       grid-template-columns: repeat(auto-fit, 300px);
@@ -51,18 +49,15 @@ const nothingInProcessMessageStyles = css`
   background-color: #3b3dc5;
 `;
 
-const setStylesToNothingMessage = ({
-  hasFound,
-  whichComponent: { inProcess },
-}) => {
-  if (hasFound && inProcess) {
+const setStylesToNothingMessage = ({ hasFound, whichComponent }) => {
+  if (hasFound && whichComponent === 'inProcess') {
     return css`
       ${scaleUpAnimation};
       ${nothingInProcessMessageStyles}
     `;
   } else if (hasFound) {
     return scaleUpAnimation;
-  } else if (inProcess) {
+  } else if (whichComponent === 'inProcess') {
     return nothingInProcessMessageStyles;
   }
 };

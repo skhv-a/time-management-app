@@ -24,7 +24,6 @@ export const CustomInput = styled.input`
   border-radius: 25px;
   padding: 25px;
   border: none;
-  background-color: red;
 
   font-family: RobotoCondensed-Light;
   font-size: 25.5px;

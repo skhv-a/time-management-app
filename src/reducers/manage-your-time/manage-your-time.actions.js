@@ -14,3 +14,13 @@ export const searchGoal = (item) => ({
   type: types.SEARCH_GOAL,
   payload: item,
 });
+
+export const done = (item) => ({
+  type: types.DONE,
+  payload: item,
+});
+
+export const remove = (item) => ({
+  type: types.REMOVE,
+  payload: item,
+});

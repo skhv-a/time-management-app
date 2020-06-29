@@ -1,6 +1,15 @@
 import styled, { css } from 'styled-components';
 import { scaleUpAnimation } from '../../animations/animations';
 
+export const setDoneStyles = ({ isDone }) => {
+  if (isDone) {
+    return css`
+      background-color: #ef820d;
+      transition: background-color 0.3s;
+    `;
+  }
+};
+
 export const Goal = styled.div`
   min-height: 60px;
   width: 80%;
@@ -23,6 +32,7 @@ export const Goal = styled.div`
 
   flex-wrap: wrap;
   ${scaleUpAnimation}
+  ${setDoneStyles}
 
   &:first-child {
     margin-top: 50px;
@@ -41,7 +51,7 @@ export const InProcessGoalItem = styled.div`
   ${scaleUpAnimation}
 `;
 
-const setGoalTitle = ({ makeRound }) => {
+const setBorder = ({ makeRound }) => {
   if (makeRound) {
     return css`
       border-radius: 26px;
@@ -61,7 +71,8 @@ export const GoalTitle = styled.div`
   display: inline-flex;
   align-items: center;
   word-break: break-word;
-  ${setGoalTitle}
+  ${setBorder}
+  ${setDoneStyles}
 `;
 
 export const GoalDescription = styled.div`

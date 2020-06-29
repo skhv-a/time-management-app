@@ -12,7 +12,7 @@ const AddGoal = () => {
     <AddGoalContainer>
       <AddGoalButton
         onClick={(e) => {
-          dispatch(toggleModal({ createGoal: true }));
+          dispatch(toggleModal({ modalType: 'createGoal' }));
         }}
       />
     </AddGoalContainer>

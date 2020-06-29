@@ -18,6 +18,26 @@ const reducer = (state, action) => {
         ...state,
         searchedGoals: [...action.payload],
       };
+    case types.DONE:
+      const currentInProcessGoal = state.goals.find(
+        (goal) => goal.id === action.payload.id //!To utils
+      );
+
+      return {
+        ...state,
+        goals: [
+          ...state.goals.filter((goal) => goal !== currentInProcessGoal),
+          action.payload,
+        ],
+      };
+    case types.REMOVE:
+      const currentDoneGoal = state.goals.find(
+        (goal) => goal.id === action.payload.id //!To utils
+      );
+      return {
+        ...state,
+        goals: [...state.goals.filter((goal) => goal !== currentDoneGoal)],
+      };
     default:
       return state;
   }

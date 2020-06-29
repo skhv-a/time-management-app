@@ -20,7 +20,7 @@ const ManageYourTimePreview = () => {
       <TimeManageSection />
       <InProcessSection />
       <DoneSection />
-      {!isHidden ? <CustomModal modalType={{ ...modalType }} /> : null}
+      {!isHidden ? <CustomModal {...modalType} /> : null}
     </Container>
   );
 };

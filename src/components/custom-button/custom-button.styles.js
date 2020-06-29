@@ -34,6 +34,14 @@ const done = css`
   }
 `;
 
+const remove = css`
+  ${done};
+  &:hover {
+    background-color: #ff0000;
+    transition: background-color 0.3s ease-in-out;
+  }
+`;
+
 const setStyles = (props) => {
   switch (true) {
     case props.startButton:
@@ -42,6 +50,8 @@ const setStyles = (props) => {
       return add;
     case props.done:
       return done;
+    case props.remove:
+      return remove;
     default:
       return null;
   }

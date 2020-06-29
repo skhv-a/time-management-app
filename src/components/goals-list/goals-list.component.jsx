@@ -5,38 +5,42 @@ import GoalItem from '../goal-item/goal-item.component';
 
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
-const GoalsList = (props) => {
+const GoalsList = ({ whichComponent, goalsSrc }) => {
   const {
     state: { goals, searchedGoals },
   } = useContext(ManageYourTimeContext);
 
   return useMemo(() => {
     return (
-      <Goals whichComponent={props}>
+      <Goals whichComponent={whichComponent}>
         {goals.length ? (
           //if goals don't have something display nothing for today
 
           searchedGoals.length ? (
             //if nothing has found from searchedGoals display "Nothing has found" message
 
-            searchedGoals.map((goal) => {
-              return (
-                <GoalItem key={goal.id} otherProps={{ ...props }} {...goal} />
-              );
-            })
+            searchedGoals.map((goal) =>
+              goalsSrc.includes(goal) ? (
+                <GoalItem
+                  key={goal.id}
+                  whichComponent={whichComponent}
+                  {...goal}
+                />
+              ) : null
+            )
           ) : (
-            <NothingMessage hasFound whichComponent={props}>
+            <NothingMessage hasFound whichComponent={whichComponent}>
               Nothing has found
             </NothingMessage>
           )
         ) : (
-          <NothingMessage whichComponent={props}>
+          <NothingMessage whichComponent={whichComponent}>
             Nothing for today
           </NothingMessage>
         )}
       </Goals>
     );
-  }, [goals, searchedGoals, props]);
+  }, [goals, searchedGoals, whichComponent, goalsSrc]);
 };
 
 export default GoalsList;
