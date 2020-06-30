@@ -42,22 +42,11 @@ const nothingInProcessMessageStyles = css`
   font-size: min(1.7vw, 25px);
   min-height: 60px;
 
-  padding: 25px;
-  border-radius: 26px;
-  text-align: center;
-
   background-color: #3b3dc5;
 `;
 
-const setStylesToNothingMessage = ({ hasFound, whichComponent }) => {
-  if (hasFound && whichComponent === 'inProcess') {
-    return css`
-      ${scaleUpAnimation};
-      ${nothingInProcessMessageStyles}
-    `;
-  } else if (hasFound) {
-    return scaleUpAnimation;
-  } else if (whichComponent === 'inProcess') {
+const setStylesToNothingMessage = ({ whichComponent }) => {
+  if (whichComponent === 'inProcess') {
     return nothingInProcessMessageStyles;
   }
 };
@@ -68,6 +57,9 @@ export const NothingMessage = styled.span`
   color: white;
 
   margin: auto auto;
-
+  padding: 25px;
+  border-radius: 26px;
+  background-color: #242582;
   ${setStylesToNothingMessage};
+  ${scaleUpAnimation};
 `;

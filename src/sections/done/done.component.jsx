@@ -1,24 +1,19 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { DoneSectionContainer } from './done.styles';
+import React from 'react';
+
+import { CustomSectionContainer } from '../../components/custom-section-container/custom-section-container.styles';
 import CustomHeader from '../../components/custom-header/custom-header.component';
-import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
+
 import GoalsList from '../../components/goals-list/goals-list.component';
 
-const DoneSection = () => {
-  const {
-    state: { goals },
-  } = useContext(ManageYourTimeContext);
+import withCustomGoals from '../../high-order-components/with-custom-goals.hoc';
 
-  const [doneGoals, setDoneGoals] = useState();
-  useEffect(() => {
-    setDoneGoals(goals.filter((goal) => goal.isDone === true));
-  }, [goals]);
+const DoneSection = ({ customGoals }) => {
   return (
-    <DoneSectionContainer>
+    <CustomSectionContainer done>
       <CustomHeader done>Done</CustomHeader>
-      <GoalsList whichComponent={'done'} goalsSrc={doneGoals} />
-    </DoneSectionContainer>
+      <GoalsList whichComponent={'done'} goalsSrc={customGoals} />
+    </CustomSectionContainer>
   );
 };
 
-export default DoneSection;
+export default withCustomGoals(DoneSection, 'done');

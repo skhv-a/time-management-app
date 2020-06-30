@@ -1,26 +1,18 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { InProcessSectionContainer } from './in-process.styles';
+import React from 'react';
+import { CustomSectionContainer } from '../../components/custom-section-container/custom-section-container.styles';
 import CustomHeader from '../../components/custom-header/custom-header.component';
 
 import GoalsList from '../../components/goals-list/goals-list.component';
-import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
-const InProcessSection = (props) => {
-  const {
-    state: { goals },
-  } = useContext(ManageYourTimeContext);
+import withCustomGoals from '../../high-order-components/with-custom-goals.hoc';
 
-  const [inProcessGoals, setInProcessGoals] = useState();
-  useEffect(() => {
-    setInProcessGoals(goals.filter((goal) => goal.isDone === false));
-  }, [goals]);
-
+const InProcessSection = ({ customGoals, whichComponent }) => {
   return (
-    <InProcessSectionContainer>
+    <CustomSectionContainer inProcess>
       <CustomHeader inProcess>In process</CustomHeader>
-      <GoalsList whichComponent={'inProcess'} goalsSrc={inProcessGoals} />
-    </InProcessSectionContainer>
+      <GoalsList whichComponent={'inProcess'} goalsSrc={customGoals} />
+    </CustomSectionContainer>
   );
 };
 
-export default InProcessSection;
+export default withCustomGoals(InProcessSection, 'inProcess');
