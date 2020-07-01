@@ -10,6 +10,8 @@ import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/m
 
 import CustomModal from '../custom-modal/custom-modal.component';
 
+export let isMobile = !window.matchMedia('(min-width:1401px)').matches;
+
 const ManageYourTimePreview = () => {
   const {
     state: { modalType, isHidden },
@@ -18,8 +20,13 @@ const ManageYourTimePreview = () => {
   return (
     <Container>
       <TimeManageSection />
-      <InProcessSection />
-      <DoneSection />
+      {isMobile ? null : (
+        <React.Fragment>
+          <InProcessSection />
+          <DoneSection />
+        </React.Fragment>
+      )}
+
       {!isHidden ? <CustomModal {...modalType} /> : null}
     </Container>
   );

@@ -54,6 +54,10 @@ export const CustomHeaderContainer = styled.div`
   align-items: center;
 
   ${setHeaderStylesFromProps};
+
+  @media only screen and (max-width: 1471px) {
+    display: none;
+  }
 `;
 
 export const LogoContainer = styled.div`
@@ -69,7 +73,6 @@ export const LogoContainer = styled.div`
 
 export const LogoTitle = styled.span`
   font-family: Roboto-Medium;
-  font-size: min(2vw, 32px);
   padding: 0 20px;
 
   color: #ffffff;

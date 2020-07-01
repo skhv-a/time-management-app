@@ -53,7 +53,7 @@ const setStylesToNothingMessage = ({ whichComponent }) => {
 
 export const NothingMessage = styled.span`
   font-family: RobotoCondensed-Light;
-  font-size: min(1.5vw, 28px);
+  font-size: 25px;
   color: white;
 
   margin: auto auto;
@@ -62,4 +62,8 @@ export const NothingMessage = styled.span`
   background-color: #242582;
   ${setStylesToNothingMessage};
   ${scaleUpAnimation};
+
+  @media only screen and (min-width: 1472px) {
+    font-size: min(1.5vw, 28px);
+  }
 `;

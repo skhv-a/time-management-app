@@ -40,7 +40,7 @@ const GoalsList = ({ whichComponent, goalsSrc }) => {
         )}
       </Goals>
     );
-  }, [goals, searchedGoals, whichComponent, goalsSrc]);
+  }, [searchedGoals]);
 };
 
 export default GoalsList;

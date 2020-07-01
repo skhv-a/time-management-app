@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 
-import { ModalForm } from './add-goal-modal.styles';
+import { ModalForm } from '../custom-modal/custom-modal.styles';
 
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 

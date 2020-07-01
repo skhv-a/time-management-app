@@ -9,4 +9,7 @@ export const TimeManageSectionContainer = styled.div`
   position: absolute;
 
   ${slideFromBottonAnimation}
+  @media only screen and (max-width: 1400px) {
+    width: 100%;
+  }
 `;

@@ -26,8 +26,9 @@ export const Goal = styled.div`
   margin: 25px 0;
 
   font-family: Roboto-Regular;
+  font-size: 22px;
   color: white;
-  font-size: min(2vw, 30px);
+
   cursor: pointer;
 
   flex-wrap: wrap;
@@ -36,6 +37,10 @@ export const Goal = styled.div`
 
   &:first-child {
     margin-top: 50px;
+  }
+
+  @media only screen and (min-width: 1472px) {
+    font-size: min(2vw, 30px);
   }
 `;
 

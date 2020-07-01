@@ -1,4 +1,5 @@
 import types from './manage-your-time.types';
+import { findCurrentGoal } from './manage-your-time.utils';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -19,9 +20,7 @@ const reducer = (state, action) => {
         searchedGoals: [...action.payload],
       };
     case types.DONE:
-      const currentInProcessGoal = state.goals.find(
-        (goal) => goal.id === action.payload.id //!To utils
-      );
+      const currentInProcessGoal = findCurrentGoal(state.goals, action.payload);
 
       return {
         ...state,
@@ -31,9 +30,7 @@ const reducer = (state, action) => {
         ],
       };
     case types.REMOVE:
-      const currentDoneGoal = state.goals.find(
-        (goal) => goal.id === action.payload.id //!To utils
-      );
+      const currentDoneGoal = findCurrentGoal(state.goals, action.payload);
       return {
         ...state,
         goals: [...state.goals.filter((goal) => goal !== currentDoneGoal)],

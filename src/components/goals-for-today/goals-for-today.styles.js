@@ -20,8 +20,11 @@ export const GoalsForTodayHeader = styled.div`
 
 export const GoalsForTodayTitle = styled.span`
   font-family: Roboto-Regular;
-  font-size: min(2vw, 28px);
+  font-size: 25px;
   color: #ffffff;
   text-align: center;
   text-transform: uppercase;
+  @media only screen and (min-width: 1401px) {
+    font-size: min(2vw, 28px);
+  }
 `;
