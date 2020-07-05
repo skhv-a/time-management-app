@@ -24,3 +24,13 @@ export const remove = (item) => ({
   type: types.REMOVE,
   payload: item,
 });
+
+export const updateTitle = (item) => ({
+  type: types.TITLE_UPDATE,
+  payload: item,
+});
+
+export const updateDescription = (item) => ({
+  type: types.DESCRIPTION_UPDATE,
+  payload: item,
+});

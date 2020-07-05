@@ -9,13 +9,14 @@ export const GoalItemModalContainer = styled.div`
   align-items: center;
 `;
 
-export const ModalTitle = styled.span`
+export const ModalTitle = styled.div`
   width: 80%;
   font-family: Roboto-Regular;
-  height: 60px;
 
-  display: flex;
+  display: inline-flex;
+
   align-items: center;
+  word-break: break-word;
 
   font-size: 25.5px;
   color: #404040;
@@ -24,16 +25,21 @@ export const ModalTitle = styled.span`
 
   border-radius: 25px;
 
-  padding: 25px;
+  padding: 0 25px;
   padding-left: 0;
 
   margin-bottom: 50px;
 
+  position: relative;
+
   &:before {
+    font-family: RobotoCondensed-Light;
+
     display: block;
+    min-width: 60px;
 
     margin-right: 25px;
-    padding: 25px 15px;
+    padding: 15px;
 
     background-color: #3b3dc5;
     color: white;
@@ -44,8 +50,6 @@ export const ModalTitle = styled.span`
 `;
 
 export const ModalDescription = styled(ModalTitle)`
-  font-family: RobotoCondensed-Light;
-
   &:before {
     content: 'Desc:';
   }

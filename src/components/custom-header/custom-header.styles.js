@@ -74,6 +74,7 @@ export const LogoContainer = styled.div`
 export const LogoTitle = styled.span`
   font-family: Roboto-Medium;
   padding: 0 20px;
+  font-size: min(2vw, 32px);
 
   color: #ffffff;
   text-align: center;

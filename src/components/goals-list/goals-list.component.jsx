@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 
 import { Goals, NothingMessage } from './goals-list.styles';
 import GoalItem from '../goal-item/goal-item.component';
@@ -10,37 +10,36 @@ const GoalsList = ({ whichComponent, goalsSrc }) => {
     state: { goals, searchedGoals },
   } = useContext(ManageYourTimeContext);
 
-  return useMemo(() => {
-    return (
-      <Goals whichComponent={whichComponent}>
-        {goals.length ? (
-          //if goals don't have something display nothing for today
 
-          searchedGoals.length ? (
-            //if nothing has found from searchedGoals display "Nothing has found" message
+  return (
+    <Goals whichComponent={whichComponent}>
+      {goals.length ? (
+        //if goals don't have something display nothing for today
 
-            searchedGoals.map((goal) =>
-              goalsSrc.includes(goal) ? (
-                <GoalItem
-                  key={goal.id}
-                  whichComponent={whichComponent}
-                  {...goal}
-                />
-              ) : null
-            )
-          ) : (
-            <NothingMessage hasFound whichComponent={whichComponent}>
-              Nothing has found
-            </NothingMessage>
+        searchedGoals.length ? (
+          //if nothing has found from searchedGoals display "Nothing has found" message
+
+          searchedGoals.map((goal) =>
+            goalsSrc.includes(goal) ? (
+              <GoalItem
+                key={goal.id}
+                whichComponent={whichComponent}
+                {...goal}
+              />
+            ) : null
           )
         ) : (
-          <NothingMessage whichComponent={whichComponent}>
-            Nothing for today
+          <NothingMessage hasFound whichComponent={whichComponent}>
+            Nothing has found
           </NothingMessage>
-        )}
-      </Goals>
-    );
-  }, [searchedGoals]);
+        )
+      ) : (
+        <NothingMessage whichComponent={whichComponent}>
+          Nothing for today
+        </NothingMessage>
+      )}
+    </Goals>
+  );
 };
 
 export default GoalsList;

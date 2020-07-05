@@ -20,8 +20,10 @@ const AddModalGoal = () => {
     title: '',
     description: '',
     isDone: false,
+    isPinned: false,
     id: id++,
   });
+
   const handleTitleInput = (e) => {
     setGoal({ ...goal, title: e.target.value.toLowerCase() });
     e.target.value.length >= 4 ? setValid(false) : setValid(true);

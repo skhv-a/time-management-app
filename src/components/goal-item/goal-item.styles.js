@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { scaleUpAnimation } from '../../animations/animations';
 
+//!CustomStyles
+
 export const setDoneStyles = ({ isDone }) => {
   if (isDone) {
     return css`
@@ -10,39 +12,47 @@ export const setDoneStyles = ({ isDone }) => {
   }
 };
 
-export const Goal = styled.div`
-  min-height: 60px;
-  width: 80%;
-
-  display: inline-flex;
-  word-break: break-word;
-  justify-content: flex-start;
-  align-self: center;
-  align-items: center;
-
-  background-color: #272187;
-  border-radius: 26px;
-  padding: 10px 25px;
-  margin: 25px 0;
-
-  font-family: Roboto-Regular;
-  font-size: 22px;
-  color: white;
-
-  cursor: pointer;
-
-  flex-wrap: wrap;
-  ${scaleUpAnimation}
-  ${setDoneStyles}
-
-  &:first-child {
-    margin-top: 50px;
+const setBorder = ({ makeRound }) => {
+  if (makeRound) {
+    return css`
+      border-radius: 26px;
+    `;
   }
+};
 
-  @media only screen and (min-width: 1472px) {
-    font-size: min(2vw, 30px);
+const setCustomGoalTitleStyles = ({ manageYourTimeSection }) => {
+  if (manageYourTimeSection) {
+    return css`
+      width: 80%;
+
+      justify-content: flex-start;
+      align-self: center;
+
+      background-color: #272187;
+      border-radius: 26px;
+      margin: 25px 0;
+
+      font-size: 22px;
+
+      cursor: pointer;
+
+      flex-wrap: wrap;
+
+      ${scaleUpAnimation}
+      ${setDoneStyles}
+
+      &:first-child {
+        margin-top: 50px;
+      }
+
+      @media only screen and (min-width: 1472px) {
+        font-size: min(2vw, 30px);
+      }
+    `;
   }
-`;
+};
+
+//!Styled Components
 
 export const InProcessGoalItem = styled.div`
   width: 80%;
@@ -56,15 +66,7 @@ export const InProcessGoalItem = styled.div`
   ${scaleUpAnimation}
 `;
 
-const setBorder = ({ makeRound }) => {
-  if (makeRound) {
-    return css`
-      border-radius: 26px;
-    `;
-  }
-};
-
-export const GoalTitle = styled.div`
+export const CustomGoalTitle = styled.div`
   width: 100%;
   min-height: 60px;
   background-color: #3b3dc5;
@@ -78,6 +80,7 @@ export const GoalTitle = styled.div`
   word-break: break-word;
   ${setBorder}
   ${setDoneStyles}
+  ${setCustomGoalTitleStyles}
 `;
 
 export const GoalDescription = styled.div`

@@ -38,7 +38,13 @@ const remove = css`
   ${done};
   &:hover {
     background-color: #ff0000;
-    transition: background-color 0.3s ease-in-out;
+  }
+`;
+
+const save = css`
+  ${done};
+  &:hover {
+    background-color: #03ac13;
   }
 `;
 
@@ -52,10 +58,14 @@ const setStyles = (props) => {
       return done;
     case props.remove:
       return remove;
+    case props.save:
+      return save;
     default:
       return null;
   }
 };
+
+//Default custom button's styles
 
 export const CustomButton = styled.button`
   text-transform: uppercase;

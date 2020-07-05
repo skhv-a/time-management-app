@@ -27,9 +27,6 @@ const DoneGoalModal = ({ goal }) => {
       }}
     >
       <GoalItemModal goal={goal} />
-      <CustomButton remove type="submit">
-        remove
-      </CustomButton>
     </ModalForm>
   );
 };

@@ -4,6 +4,8 @@ const types = {
   SEARCH_GOAL: 'SEARCH_GOAL',
   DONE: 'DONE',
   REMOVE: 'REMOVE',
+  TITLE_UPDATE: 'TITLE_UPDATE',
+  DESCRIPTION_UPDATE: 'DESCRIPTION_UPDATE',
 };
 
 export default types;

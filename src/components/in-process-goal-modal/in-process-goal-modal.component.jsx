@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { ModalForm } from '../custom-modal/custom-modal.styles';
 import GoalItemModal from '../goal-item-modal/goal-item-modal.component';
 import { CustomButton } from '../custom-button/custom-button.styles';
@@ -10,6 +10,7 @@ import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/m
 
 const InProcessGoalModal = ({ goal }) => {
   const { dispatch } = useContext(ManageYourTimeContext);
+
   const handleDoneSubmit = (e) => {
     e.preventDefault();
     dispatch(toggleModal({}));
@@ -27,9 +28,6 @@ const InProcessGoalModal = ({ goal }) => {
       }}
     >
       <GoalItemModal goal={goal} />
-      <CustomButton done type="submit">
-        done
-      </CustomButton>
     </ModalForm>
   );
 };
