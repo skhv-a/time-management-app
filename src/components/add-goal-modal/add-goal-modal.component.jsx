@@ -1,43 +1,27 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 
 import { ModalForm } from '../custom-modal/custom-modal.styles';
 
-import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
-
 import { CustomInput } from '../custom-input/custom-input.styles';
 import { CustomButton } from '../custom-button/custom-button.styles';
-import {
-  toggleModal,
-  addGoal,
-} from '../../reducers/manage-your-time/manage-your-time.actions';
 
-let id = 0;
+import useHandleInput from '../../custom-hooks/use-handle-input';
+import useHandleSubmit from '../../custom-hooks/use-handle-submit';
+import { addGoal } from '../../reducers/manage-your-time/manage-your-time.actions';
 
 const AddModalGoal = () => {
-  const [isValid, setValid] = useState(true);
-  const { dispatch } = useContext(ManageYourTimeContext);
-  const [goal, setGoal] = useState({
-    title: '',
-    description: '',
-    isDone: false,
-    isPinned: false,
-    id: id++,
-  });
+  const {
+    handleTitleInput,
+    handleDescriptionInput,
+    goal,
+    isValid,
+  } = useHandleInput();
 
-  const handleTitleInput = (e) => {
-    setGoal({ ...goal, title: e.target.value.toLowerCase() });
-    e.target.value.length >= 4 ? setValid(false) : setValid(true);
-  };
-  const handleDescriptionInput = (e) => {
-    setGoal({ ...goal, description: e.target.value });
-  };
+  const { handleSubmit, dispatch } = useHandleSubmit(addGoalOnSubmit);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(toggleModal({}));
+  function addGoalOnSubmit() {
     dispatch(addGoal(goal));
-    setValid(true);
-  };
+  }
 
   return (
     <ModalForm
@@ -45,7 +29,7 @@ const AddModalGoal = () => {
       onKeyUp={(e) => {
         if (e.keyCode === 13) {
           e.preventDefault();
-          CustomButton.click();
+          ModalForm.submit();
         }
       }}
     >
@@ -60,7 +44,7 @@ const AddModalGoal = () => {
         placeholder="Description"
         onInput={handleDescriptionInput}
       />
-      <CustomButton add type="submit" disabled={isValid}>
+      <CustomButton add type="submit" disabled={!isValid}>
         Add goal
       </CustomButton>
     </ModalForm>

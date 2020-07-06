@@ -1,18 +1,34 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { CustomModalContainer, Overlay } from './custom-modal.styles';
 
-import { toggleModal } from '../../reducers/manage-your-time/manage-your-time.actions';
-
-import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
+import {
+  toggleModal,
+  done,
+  remove,
+} from '../../reducers/manage-your-time/manage-your-time.actions';
 
 import AddModalGoal from '../add-goal-modal/add-goal-modal.component';
 
-import InProcessGoalModal from '../in-process-goal-modal/in-process-goal-modal.component';
-import DoneGoalModal from '../done-goal-modal/done-goal-modal.component';
+import CustomGoalModal from '../custom-goal-modal/custom-goal-modal.component';
+
+import useHandleSubmit from '../../custom-hooks/use-handle-submit';
 
 const CustomModal = ({ modalType, goal }) => {
-  const { dispatch } = useContext(ManageYourTimeContext);
+  const { handleSubmit: inProcessSubmit, dispatch } = useHandleSubmit(
+    inProcessSubmitFunc
+  );
+
+  function inProcessSubmitFunc() {
+    goal.isDone = true;
+    dispatch(done(goal));
+  }
+
+  const { handleSubmit: doneSubmit } = useHandleSubmit(doneSubmitFunction);
+
+  function doneSubmitFunction() {
+    dispatch(remove(goal));
+  }
 
   return (
     <CustomModalContainer>
@@ -25,9 +41,9 @@ const CustomModal = ({ modalType, goal }) => {
       {modalType === 'createGoal' ? (
         <AddModalGoal />
       ) : modalType === 'inProcess' ? (
-        <InProcessGoalModal goal={goal} />
+        <CustomGoalModal goal={goal} onSubmitFunc={inProcessSubmit} />
       ) : (
-        <DoneGoalModal goal={goal} />
+        <CustomGoalModal goal={goal} onSubmitFunc={doneSubmit} />
       )}
     </CustomModalContainer>
   );

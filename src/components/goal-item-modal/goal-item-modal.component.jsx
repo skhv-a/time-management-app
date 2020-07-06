@@ -56,7 +56,7 @@ const GoalItemModal = ({ goal: { title, description, isDone }, goal }) => {
         </ModalTitle>
       ) : (
         <CustomInput
-          defaultValue={titleInputValue}
+          defaultValue={title}
           onInput={(e) => setTitleInputValue(e.target.value)}
           editInput
         />
@@ -68,7 +68,7 @@ const GoalItemModal = ({ goal: { title, description, isDone }, goal }) => {
             isDone={isDone}
             onDoubleClick={() => setDescriptionEdit(true)}
           >
-            {descriptionInputValue}
+            {description}
             {!isDone ? (
               <InputEditor onClick={() => setDescriptionEdit(true)}>
                 Edit...
@@ -104,3 +104,5 @@ const GoalItemModal = ({ goal: { title, description, isDone }, goal }) => {
 };
 
 export default GoalItemModal;
+
+//!need to refact

@@ -1,7 +1,7 @@
 import types from './manage-your-time.types';
 import {
-  findCurrentGoal,
   findCurrentGoalIndex,
+  customInputUpdater,
 } from './manage-your-time.utils';
 
 const reducer = (state, action) => {
@@ -11,83 +11,69 @@ const reducer = (state, action) => {
         ...state,
         goals: [...state.goals, action.payload],
       };
+
     case types.TOGGLE_MODAL:
       return {
         ...state,
         isHidden: !state.isHidden,
         modalType: action.payload,
       };
+
     case types.SEARCH_GOAL:
       return {
         ...state,
         searchedGoals: [...action.payload],
       };
+
     case types.DONE:
-      const currentInProcessGoal = findCurrentGoal(state.goals, action.payload);
+      const currentInProcessGoalIndex = findCurrentGoalIndex(
+        state.goals,
+        action.payload
+      );
+
+      state.goals.splice(currentInProcessGoalIndex, 1, action.payload);
 
       return {
         ...state,
-        goals: [
-          ...state.goals.filter((goal) => goal !== currentInProcessGoal),
-          action.payload,
-        ],
+        goals: [...state.goals],
       };
+
     case types.REMOVE:
-      const currentDoneGoal = findCurrentGoal(state.goals, action.payload);
       return {
         ...state,
-        goals: [...state.goals.filter((goal) => goal !== currentDoneGoal)],
+        goals: [...state.goals.filter((goal) => goal.id !== action.payload.id)],
       };
-    case types.TITLE_UPDATE: //! TO UTILS
-      const currentUpdatedTitleGoal = findCurrentGoal(
-        state.goals,
-        action.payload.goal
-      );
 
-      const currentUpdatedTitleGoalIndex = findCurrentGoalIndex(
-        state.goals,
-        action.payload.goal
-      );
+    case types.TITLE_UPDATE:
+      const { updatedTitle, goal: titleGoal } = action.payload;
 
-      currentUpdatedTitleGoal.title = action.payload.updatedTitle;
-
-      state.goals.splice(
-        currentUpdatedTitleGoalIndex,
-        1,
-        currentUpdatedTitleGoal
-      );
-
+      const titleUpdater = customInputUpdater(state.goals, titleGoal);
+      const goalsWithUpdatedTitle = titleUpdater('title', updatedTitle);
       return {
         ...state,
-        goals: [...state.goals],
+        goals: [...goalsWithUpdatedTitle],
       };
 
-    case types.DESCRIPTION_UPDATE: //! TO UTILS
-      const currentUpdatedDescriptionGoal = findCurrentGoal(
+    case types.DESCRIPTION_UPDATE:
+      const { updatedDescription, goal: descriptionGoal } = action.payload;
+
+      const descriptionUpdater = customInputUpdater(
         state.goals,
-        action.payload.goal
+        descriptionGoal
       );
 
-      const currentUpdatedDescriptionGoalIndex = findCurrentGoalIndex(
-        state.goals,
-        action.payload.goal
-      );
-
-      currentUpdatedDescriptionGoal.description =
-        action.payload.updatedDescription;
-
-      state.goals.splice(
-        currentUpdatedDescriptionGoalIndex,
-        1,
-        currentUpdatedDescriptionGoal
+      const goalsWithUpdatedDescription = descriptionUpdater(
+        'description',
+        updatedDescription
       );
 
       return {
         ...state,
-        goals: [...state.goals],
+        goals: [...goalsWithUpdatedDescription],
       };
+
     default:
-      return state;
+      return { ...state };
   }
 };
 

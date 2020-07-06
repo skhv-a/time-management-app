@@ -10,7 +10,6 @@ const GoalsList = ({ whichComponent, goalsSrc }) => {
     state: { goals, searchedGoals },
   } = useContext(ManageYourTimeContext);
 
-
   return (
     <Goals whichComponent={whichComponent}>
       {goals.length ? (
@@ -43,3 +42,5 @@ const GoalsList = ({ whichComponent, goalsSrc }) => {
 };
 
 export default GoalsList;
+
+//!need to refact
