@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import {
   GoalItemModalContainer,
   ModalTitle,
@@ -6,48 +6,24 @@ import {
 } from './goal-item-modal.styles';
 import { InputEditor } from '../input-editor/input-editor.styles';
 import { CustomInput } from '../custom-input/custom-input.styles';
-import { CustomButton } from '../custom-button/custom-button.styles';
-import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
-import {
-  updateTitle,
-  updateDescription,
-} from '../../reducers/manage-your-time/manage-your-time.actions';
+import useGoalModal from '../../custom-hooks/use-goal-modal';
 
 const GoalItemModal = ({ goal: { title, description, isDone }, goal }) => {
-  const { dispatch } = useContext(ManageYourTimeContext);
-
-  const [isTitleEdit, setTitleEdit] = useState(false);
-  const [isDescriptionEdit, setDescriptionEdit] = useState(false);
-
-  const [titleInputValue, setTitleInputValue] = useState(title);
-  const [descriptionInputValue, setDescriptionInputValue] = useState(
-    description
-  );
-
-  const handleInputEdit = (e) => {
-    e.preventDefault();
-    if (titleInputValue !== title) {
-      setTitleEdit(false);
-
-      dispatch(updateTitle({ updatedTitle: titleInputValue, goal }));
-    }
-    if (descriptionInputValue !== description) {
-      setDescriptionEdit(false);
-
-      dispatch(
-        updateDescription({ updatedDescription: descriptionInputValue, goal })
-      );
-    } else {
-      setTitleEdit(false);
-      setDescriptionEdit(false);
-    }
-  };
+  const {
+    isTitleEdit,
+    isDescriptionEdit,
+    setTitleEdit,
+    setDescriptionEdit,
+    setTitleInputValue,
+    setDescriptionInputValue,
+    ButtonSelector,
+  } = useGoalModal(title, description, goal);
 
   return (
     <GoalItemModalContainer>
       {!isTitleEdit ? (
         <ModalTitle isDone={isDone} onDoubleClick={() => setTitleEdit(true)}>
-          {titleInputValue}
+          {title}
           {!isDone ? (
             <InputEditor onClick={() => setTitleEdit(true)}>
               Edit...
@@ -77,32 +53,16 @@ const GoalItemModal = ({ goal: { title, description, isDone }, goal }) => {
           </ModalDescription>
         ) : (
           <CustomInput
-            defaultValue={descriptionInputValue}
+            defaultValue={description}
             onInput={(e) => setDescriptionInputValue(e.target.value)}
             editInput
           />
         )
       ) : null}
 
-      {!isDone ? (
-        isTitleEdit || isDescriptionEdit ? (
-          <CustomButton save type="button" onClick={handleInputEdit}>
-            Save
-          </CustomButton>
-        ) : (
-          <CustomButton done type="submit">
-            Done
-          </CustomButton>
-        )
-      ) : (
-        <CustomButton remove type="submit">
-          remove
-        </CustomButton>
-      )}
+      <ButtonSelector isDone={isDone} />
     </GoalItemModalContainer>
   );
 };
 
 export default GoalItemModal;
-
-//!need to refact

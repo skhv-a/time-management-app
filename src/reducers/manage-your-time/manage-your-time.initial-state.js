@@ -1,13 +1,5 @@
 const INITIAL_STATE = {
-  goals: [
-    {
-      title: 'asdfads',
-      description: 'asdfasdf',
-      isDone: false,
-      isPinned: false,
-      id: 19,
-    },
-  ],
+  goals: [],
   searchedGoals: [],
   isHidden: true,
   modalType: {},

@@ -1,29 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 
 import { SearchContainer } from './search-box.styles';
 import { CustomInput } from '../custom-input/custom-input.styles';
-import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
-
-import { searchGoal } from '../../reducers/manage-your-time/manage-your-time.actions';
+import useHandleSearchInput from '../../custom-hooks/use-handle-search-input';
 
 const SearchBox = () => {
-  const {
-    dispatch,
-    state: { goals },
-  } = useContext(ManageYourTimeContext);
-
-  useEffect(() => {
-    dispatch(searchGoal(goals));
-  }, [goals, dispatch]);
-
-  const handleSearchInput = (e) => {
-    const searchedGoals = goals.filter((goal) =>
-      goal.title.includes(e.target.value.toLowerCase().trim())
-    );
-
-    dispatch(searchGoal(searchedGoals));
-  };
-
+  const { handleSearchInput } = useHandleSearchInput();
   return (
     <SearchContainer>
       <CustomInput
@@ -36,5 +18,3 @@ const SearchBox = () => {
 };
 
 export default SearchBox;
-
-//!need to refact

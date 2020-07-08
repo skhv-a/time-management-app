@@ -20,7 +20,7 @@ const GoalsForToday = () => {
       <GoalsForTodayHeader>
         <GoalsForTodayTitle>Your goals for today</GoalsForTodayTitle>
       </GoalsForTodayHeader>
-      <GoalsList goalsSrc={goals} />
+      <GoalsList goalsSrc={goals} manageYourTimeSection />
       <AddGoal />
     </GoalsForTodayContainer>
   );

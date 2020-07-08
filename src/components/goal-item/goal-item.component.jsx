@@ -8,34 +8,20 @@ import {
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 import { toggleModal } from '../../reducers/manage-your-time/manage-your-time.actions';
 
-const GoalItem = ({
-  title,
-  description,
-  isDone,
-  isPinned,
-  id,
-  whichComponent,
-}) => {
+const GoalItem = ({ manageYourTimeSection, ...goal }) => {
+  const { title, description, isDone } = goal;
+
   const { dispatch } = useContext(ManageYourTimeContext);
 
   const handleClick = () => {
     dispatch(
       toggleModal({
-        modalType: isDone ? 'done' : 'inProcess',
-        goal: { title, description, isDone, isPinned, id },
+        goal,
       })
     );
   };
-  if (whichComponent === 'inProcess' || whichComponent === 'done') {
-    return (
-      <InProcessGoalItem onClick={handleClick}>
-        <CustomGoalTitle makeRound={!description} isDone={isDone}>
-          {title}
-        </CustomGoalTitle>
-        {description ? <GoalDescription>{description}</GoalDescription> : null}
-      </InProcessGoalItem>
-    );
-  } else {
+
+  if (manageYourTimeSection) {
     return (
       <CustomGoalTitle
         onClick={handleClick}
@@ -45,9 +31,16 @@ const GoalItem = ({
         {title}
       </CustomGoalTitle>
     );
+  } else {
+    return (
+      <InProcessGoalItem onClick={handleClick}>
+        <CustomGoalTitle makeRound={!description} isDone={isDone}>
+          {title}
+        </CustomGoalTitle>
+        {description ? <GoalDescription>{description}</GoalDescription> : null}
+      </InProcessGoalItem>
+    );
   }
 };
 
 export default GoalItem;
-
-//!need to refact

@@ -40,7 +40,7 @@ const CustomModal = ({ modalType, goal }) => {
 
       {modalType === 'createGoal' ? (
         <AddModalGoal />
-      ) : modalType === 'inProcess' ? (
+      ) : !goal.isDone ? (
         <CustomGoalModal goal={goal} onSubmitFunc={inProcessSubmit} />
       ) : (
         <CustomGoalModal goal={goal} onSubmitFunc={doneSubmit} />

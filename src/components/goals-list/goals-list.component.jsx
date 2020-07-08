@@ -5,13 +5,13 @@ import GoalItem from '../goal-item/goal-item.component';
 
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
-const GoalsList = ({ whichComponent, goalsSrc }) => {
+const GoalsList = ({ goalsSrc, manageYourTimeSection }) => {
   const {
     state: { goals, searchedGoals },
   } = useContext(ManageYourTimeContext);
 
   return (
-    <Goals whichComponent={whichComponent}>
+    <Goals manageYourTimeSection={manageYourTimeSection}>
       {goals.length ? (
         //if goals don't have something display nothing for today
 
@@ -22,25 +22,19 @@ const GoalsList = ({ whichComponent, goalsSrc }) => {
             goalsSrc.includes(goal) ? (
               <GoalItem
                 key={goal.id}
-                whichComponent={whichComponent}
+                manageYourTimeSection={manageYourTimeSection}
                 {...goal}
               />
             ) : null
           )
         ) : (
-          <NothingMessage hasFound whichComponent={whichComponent}>
-            Nothing has found
-          </NothingMessage>
+          <NothingMessage hasFound>Nothing has found</NothingMessage>
         )
       ) : (
-        <NothingMessage whichComponent={whichComponent}>
-          Nothing for today
-        </NothingMessage>
+        <NothingMessage>Nothing for today</NothingMessage>
       )}
     </Goals>
   );
 };
 
 export default GoalsList;
-
-//!need to refact
