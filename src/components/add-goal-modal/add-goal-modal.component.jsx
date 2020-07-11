@@ -7,7 +7,10 @@ import { CustomButton } from '../custom-button/custom-button.styles';
 
 import useHandleInput from '../../custom-hooks/use-handle-input';
 import useHandleSubmit from '../../custom-hooks/use-handle-submit';
-import { addGoal } from '../../reducers/manage-your-time/manage-your-time.actions';
+import {
+  addGoal,
+  toggleAddGoalModal,
+} from '../../reducers/manage-your-time/manage-your-time.actions';
 
 const AddModalGoal = () => {
   const {
@@ -20,6 +23,7 @@ const AddModalGoal = () => {
   const { handleSubmit, dispatch } = useHandleSubmit(addGoalOnSubmit);
 
   function addGoalOnSubmit() {
+    dispatch(toggleAddGoalModal());
     dispatch(addGoal(goal));
   }
 

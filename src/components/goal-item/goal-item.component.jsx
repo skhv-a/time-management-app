@@ -5,8 +5,10 @@ import {
   CustomGoalTitle,
   GoalDescription,
 } from './goal-item.styles';
+
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
-import { toggleModal } from '../../reducers/manage-your-time/manage-your-time.actions';
+
+import { togglePreviewGoalModal } from '../../reducers/manage-your-time/manage-your-time.actions';
 
 const GoalItem = ({ manageYourTimeSection, ...goal }) => {
   const { title, description, isDone } = goal;
@@ -14,33 +16,31 @@ const GoalItem = ({ manageYourTimeSection, ...goal }) => {
   const { dispatch } = useContext(ManageYourTimeContext);
 
   const handleClick = () => {
-    dispatch(
-      toggleModal({
-        goal,
-      })
-    );
+    dispatch(togglePreviewGoalModal(goal));
   };
 
-  if (manageYourTimeSection) {
-    return (
-      <CustomGoalTitle
-        onClick={handleClick}
-        isDone={isDone}
-        manageYourTimeSection
-      >
-        {title}
-      </CustomGoalTitle>
-    );
-  } else {
-    return (
-      <InProcessGoalItem onClick={handleClick}>
-        <CustomGoalTitle makeRound={!description} isDone={isDone}>
+  return (
+    <React.Fragment>
+      {manageYourTimeSection ? (
+        <CustomGoalTitle
+          onClick={handleClick}
+          isDone={isDone}
+          manageYourTimeSection
+        >
           {title}
         </CustomGoalTitle>
-        {description ? <GoalDescription>{description}</GoalDescription> : null}
-      </InProcessGoalItem>
-    );
-  }
+      ) : (
+        <InProcessGoalItem onClick={handleClick}>
+          <CustomGoalTitle makeRound={!description} isDone={isDone}>
+            {title}
+          </CustomGoalTitle>
+          {description ? (
+            <GoalDescription>{description}</GoalDescription>
+          ) : null}
+        </InProcessGoalItem>
+      )}
+    </React.Fragment>
+  );
 };
 
 export default GoalItem;

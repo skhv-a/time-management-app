@@ -15,6 +15,7 @@ const GoalsForToday = () => {
   const {
     state: { goals },
   } = useContext(ManageYourTimeContext);
+
   return (
     <GoalsForTodayContainer>
       <GoalsForTodayHeader>

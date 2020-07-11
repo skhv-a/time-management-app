@@ -6,11 +6,11 @@ import GoalsList from '../../components/goals-list/goals-list.component';
 
 import withCustomGoals from '../../high-order-components/with-custom-goals.hoc';
 
-const InProcessSection = ({ customGoals, whichComponent }) => {
+const InProcessSection = ({ customGoals }) => {
   return (
     <CustomSectionContainer inProcess>
       <CustomHeader inProcess>In process</CustomHeader>
-      <GoalsList whichComponent={'inProcess'} goalsSrc={customGoals} />
+      <GoalsList goalsSrc={customGoals} />
     </CustomSectionContainer>
   );
 };

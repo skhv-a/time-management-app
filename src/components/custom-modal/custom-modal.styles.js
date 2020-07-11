@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { scaleUpAnimation } from '../../animations/animations';
 
 export const CustomModalContainer = styled.div`
+  top: 0;
   width: 100vw;
   height: 100vh;
 

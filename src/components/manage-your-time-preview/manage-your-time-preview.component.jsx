@@ -5,18 +5,16 @@ import InProcessSection from '../../sections/in-process/in-process.component';
 import DoneSection from '../../sections/done/done.component';
 
 import { Container } from './manage-your-time-preview.styles.js';
-
-import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
-
+import { createPortal } from 'react-dom';
 import CustomModal from '../custom-modal/custom-modal.component';
+import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
 export let isMobile = !window.matchMedia('(min-width:1401px)').matches;
 
 const ManageYourTimePreview = () => {
   const {
-    state: { modalType, isHidden },
+    state: { previewGoalModalIsHidden, currentGoal },
   } = useContext(ManageYourTimeContext);
-
   return (
     <Container>
       <TimeManageSection />
@@ -26,8 +24,12 @@ const ManageYourTimePreview = () => {
           <DoneSection />
         </React.Fragment>
       )}
-
-      {!isHidden ? <CustomModal {...modalType} /> : null}
+      {!previewGoalModalIsHidden
+        ? createPortal(
+            <CustomModal goal={currentGoal} />,
+            document.getElementById('preview-goal-modal')
+          )
+        : null}
     </Container>
   );
 };

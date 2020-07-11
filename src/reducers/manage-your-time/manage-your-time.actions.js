@@ -5,8 +5,13 @@ export const addGoal = (item) => ({
   payload: item,
 });
 
-export const toggleModal = (props) => ({
-  type: types.TOGGLE_MODAL,
+export const toggleAddGoalModal = (props) => ({
+  type: types.TOGGLE_ADD_GOAL_MODAL,
+  payload: props,
+});
+
+export const togglePreviewGoalModal = (props) => ({
+  type: types.TOGGLE_PREVIEW_GOAL_MODAL,
   payload: props,
 });
 

@@ -4,17 +4,29 @@ import { AddGoalContainer, AddGoalButton } from './add-goal.styles';
 
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
-import { toggleModal } from '../../reducers/manage-your-time/manage-your-time.actions';
+import CustomModal from '../custom-modal/custom-modal.component';
+import { toggleAddGoalModal } from '../../reducers/manage-your-time/manage-your-time.actions';
+import { createPortal } from 'react-dom';
 
 const AddGoal = () => {
-  const { dispatch } = useContext(ManageYourTimeContext);
+  const {
+    dispatch,
+    state: { addGoalModalIsHidden },
+  } = useContext(ManageYourTimeContext);
+
   return (
     <AddGoalContainer>
       <AddGoalButton
-        onClick={(e) => {
-          dispatch(toggleModal({ modalType: 'createGoal' }));
+        onClick={() => {
+          dispatch(toggleAddGoalModal());
         }}
       />
+      {!addGoalModalIsHidden
+        ? createPortal(
+            <CustomModal createGoalModal />,
+            document.getElementById('add-goal-modal')
+          )
+        : null}
     </AddGoalContainer>
   );
 };

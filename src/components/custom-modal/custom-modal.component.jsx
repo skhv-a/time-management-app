@@ -3,7 +3,8 @@ import React from 'react';
 import { CustomModalContainer, Overlay } from './custom-modal.styles';
 
 import {
-  toggleModal,
+  togglePreviewGoalModal,
+  toggleAddGoalModal,
   done,
   remove,
 } from '../../reducers/manage-your-time/manage-your-time.actions';
@@ -14,17 +15,21 @@ import CustomGoalModal from '../custom-goal-modal/custom-goal-modal.component';
 
 import useHandleSubmit from '../../custom-hooks/use-handle-submit';
 
-const CustomModal = ({ modalType, goal }) => {
+const CustomModal = ({ createGoalModal, goal }) => {
   const { handleSubmit: inProcessSubmit, dispatch } = useHandleSubmit(
-    inProcessSubmitFunc
+    inProcessSubmitFunc,
+    true
+  );
+
+  const { handleSubmit: doneSubmit } = useHandleSubmit(
+    doneSubmitFunction,
+    true
   );
 
   function inProcessSubmitFunc() {
     goal.isDone = true;
     dispatch(done(goal));
   }
-
-  const { handleSubmit: doneSubmit } = useHandleSubmit(doneSubmitFunction);
 
   function doneSubmitFunction() {
     dispatch(remove(goal));
@@ -34,11 +39,13 @@ const CustomModal = ({ modalType, goal }) => {
     <CustomModalContainer>
       <Overlay
         onClick={() => {
-          dispatch(toggleModal({}));
+          dispatch(
+            createGoalModal ? toggleAddGoalModal() : togglePreviewGoalModal()
+          );
         }}
       />
 
-      {modalType === 'createGoal' ? (
+      {createGoalModal ? (
         <AddModalGoal />
       ) : !goal.isDone ? (
         <CustomGoalModal goal={goal} onSubmitFunc={inProcessSubmit} />

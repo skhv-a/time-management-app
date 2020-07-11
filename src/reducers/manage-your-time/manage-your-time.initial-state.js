@@ -1,8 +1,9 @@
 const INITIAL_STATE = {
   goals: [],
   searchedGoals: [],
-  isHidden: true,
-  modalType: {},
+  addGoalModalIsHidden: true,
+  previewGoalModalIsHidden: true,
+  currentGoal: {},
 };
 
 export default INITIAL_STATE;

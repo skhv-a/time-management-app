@@ -11,7 +11,7 @@ const DoneSection = ({ customGoals }) => {
   return (
     <CustomSectionContainer done>
       <CustomHeader done>Done</CustomHeader>
-      <GoalsList whichComponent={'done'} goalsSrc={customGoals} />
+      <GoalsList goalsSrc={customGoals} />
     </CustomSectionContainer>
   );
 };

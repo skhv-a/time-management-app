@@ -18,15 +18,15 @@ const GoalsList = ({ goalsSrc, manageYourTimeSection }) => {
         searchedGoals.length ? (
           //if nothing has found from searchedGoals display "Nothing has found" message
 
-          searchedGoals.map((goal) =>
-            goalsSrc.includes(goal) ? (
+          searchedGoals.map((goal) => {
+            return goalsSrc.includes(goal) ? (
               <GoalItem
                 key={goal.id}
                 manageYourTimeSection={manageYourTimeSection}
                 {...goal}
               />
-            ) : null
-          )
+            ) : null;
+          })
         ) : (
           <NothingMessage hasFound>Nothing has found</NothingMessage>
         )
