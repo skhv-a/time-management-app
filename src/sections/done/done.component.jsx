@@ -5,15 +5,13 @@ import CustomHeader from '../../components/custom-header/custom-header.component
 
 import GoalsList from '../../components/goals-list/goals-list.component';
 
-import withCustomGoals from '../../high-order-components/with-custom-goals.hoc';
-
-const DoneSection = ({ customGoals }) => {
+const DoneSection = () => {
   return (
     <CustomSectionContainer done>
       <CustomHeader done>Done</CustomHeader>
-      <GoalsList goalsSrc={customGoals} />
+      <GoalsList done />
     </CustomSectionContainer>
   );
 };
 
-export default withCustomGoals(DoneSection, 'done');
+export default DoneSection;

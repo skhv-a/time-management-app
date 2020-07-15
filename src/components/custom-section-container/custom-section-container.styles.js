@@ -25,7 +25,6 @@ export const CustomSectionContainer = styled.div`
 
   position: absolute;
 
-  overflow: scroll;
   @media only screen and (max-width: 1400px) {
     display: none;
   }

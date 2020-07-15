@@ -17,51 +17,56 @@ const GoalItemModal = ({ goal: { title, description, isDone }, goal }) => {
     setTitleInputValue,
     setDescriptionInputValue,
     ButtonSelector,
+    titleInputValue,
+    descriptionInputValue,
   } = useGoalModal(title, description, goal);
 
+  goal.title = titleInputValue;
+  goal.description = descriptionInputValue;
   return (
-    <GoalItemModalContainer>
-      {!isTitleEdit ? (
-        <ModalTitle isDone={isDone} onDoubleClick={() => setTitleEdit(true)}>
-          {title}
-          {!isDone ? (
-            <InputEditor onClick={() => setTitleEdit(true)}>
-              Edit...
-            </InputEditor>
-          ) : null}
-        </ModalTitle>
-      ) : (
-        <CustomInput
-          defaultValue={title}
-          onInput={(e) => setTitleInputValue(e.target.value)}
-          editInput
-        />
-      )}
-
-      {description ? (
-        !isDescriptionEdit ? (
-          <ModalDescription
-            isDone={isDone}
-            onDoubleClick={() => setDescriptionEdit(true)}
-          >
-            {description}
+    <React.Fragment>
+      <GoalItemModalContainer>
+        {!isTitleEdit ? (
+          <ModalTitle isDone={isDone} onDoubleClick={() => setTitleEdit(true)}>
+            {title}
             {!isDone ? (
-              <InputEditor onClick={() => setDescriptionEdit(true)}>
+              <InputEditor onClick={() => setTitleEdit(true)}>
                 Edit...
               </InputEditor>
             ) : null}
-          </ModalDescription>
+          </ModalTitle>
         ) : (
           <CustomInput
-            defaultValue={description}
-            onInput={(e) => setDescriptionInputValue(e.target.value)}
+            defaultValue={title}
+            onInput={(e) => setTitleInputValue(e.target.value)}
             editInput
           />
-        )
-      ) : null}
+        )}
 
+        {description ? (
+          !isDescriptionEdit ? (
+            <ModalDescription
+              isDone={isDone}
+              onDoubleClick={() => setDescriptionEdit(true)}
+            >
+              {description}
+              {!isDone ? (
+                <InputEditor onClick={() => setDescriptionEdit(true)}>
+                  Edit...
+                </InputEditor>
+              ) : null}
+            </ModalDescription>
+          ) : (
+            <CustomInput
+              defaultValue={description}
+              onInput={(e) => setDescriptionInputValue(e.target.value)}
+              editInput
+            />
+          )
+        ) : null}
+      </GoalItemModalContainer>
       <ButtonSelector isDone={isDone} />
-    </GoalItemModalContainer>
+    </React.Fragment>
   );
 };
 

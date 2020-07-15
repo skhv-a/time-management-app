@@ -16,6 +16,9 @@ export const GoalsForTodayHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 700px) {
+    border-radius: 15px;
+  }
 `;
 
 export const GoalsForTodayTitle = styled.span`

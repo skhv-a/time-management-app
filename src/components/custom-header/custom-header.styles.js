@@ -55,7 +55,7 @@ export const CustomHeaderContainer = styled.div`
 
   ${setHeaderStylesFromProps};
 
-  @media only screen and (max-width: 1471px) {
+  @media only screen and (max-width: 1400px) {
     display: none;
   }
 `;

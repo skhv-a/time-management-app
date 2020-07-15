@@ -7,10 +7,9 @@ import { CustomButton } from '../custom-button/custom-button.styles';
 
 import useHandleInput from '../../custom-hooks/use-handle-input';
 import useHandleSubmit from '../../custom-hooks/use-handle-submit';
-import {
-  addGoal,
-  toggleAddGoalModal,
-} from '../../reducers/manage-your-time/manage-your-time.actions';
+import { toggleAddGoalModal } from '../../reducers/manage-your-time/manage-your-time.actions';
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_GOAL, GET_GOALS } from '../../apollo-gqls';
 
 const AddModalGoal = () => {
   const {
@@ -19,12 +18,17 @@ const AddModalGoal = () => {
     goal,
     isValid,
   } = useHandleInput();
-
   const { handleSubmit, dispatch } = useHandleSubmit(addGoalOnSubmit);
+
+  const [createGoal] = useMutation(ADD_GOAL);
 
   function addGoalOnSubmit() {
     dispatch(toggleAddGoalModal());
-    dispatch(addGoal(goal));
+
+    createGoal({
+      variables: { ...goal },
+      refetchQueries: () => [{ query: GET_GOALS }],
+    });
   }
 
   return (

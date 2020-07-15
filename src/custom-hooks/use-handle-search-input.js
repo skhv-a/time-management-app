@@ -1,31 +1,21 @@
-const { useContext, useEffect } = require('react');
-const {
-  ManageYourTimeContext,
-} = require('../contexts/manage-your-time-preview/manage-your-time.context');
-const {
-  searchGoal,
-} = require('../reducers/manage-your-time/manage-your-time.actions');
+import { useContext } from 'react';
+import { ManageYourTimeContext } from '../contexts/manage-your-time-preview/manage-your-time.context';
+import { searchRequest } from '../reducers/manage-your-time/manage-your-time.actions';
 
 const useHandleSearchInput = () => {
-  const {
-    dispatch,
-    state: { goals },
-  } = useContext(ManageYourTimeContext);
-
-  useEffect(() => {
-    dispatch(searchGoal(goals));
-  }, [goals, dispatch]);
+  const { dispatch } = useContext(ManageYourTimeContext);
 
   const handleSearchInput = (e) => {
-    const searchedGoals = goals.filter((goal) =>
-      goal.title.includes(e.target.value.toLowerCase().trim())
-    );
+    dispatch(searchRequest(e.target.value.toLowerCase().trim()));
+  };
 
-    dispatch(searchGoal(searchedGoals));
+  const searchedGoals = (data, searchRequest) => {
+    return data.filter((goal) => goal.title.includes(searchRequest));
   };
 
   return {
     handleSearchInput,
+    searchedGoals,
   };
 };
 

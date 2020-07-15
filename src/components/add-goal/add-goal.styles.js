@@ -11,6 +11,9 @@ export const AddGoalContainer = styled.div`
   justify-content: center;
   align-items: center;
   align-self: flex-end;
+  @media only screen and (max-width: 700px) {
+    border-radius: 15px 15px 0 0;
+  }
 `;
 
 export const AddGoalButton = styled(addButtonSVG)`

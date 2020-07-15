@@ -15,9 +15,6 @@ const setStylesToGoalsContainer = ({ manageYourTimeSection }) => {
 
       flex: 1;
 
-      overflow-x: hidden;
-      overflow-y: scroll;
-
       margin: 0 auto;
     `;
   }
@@ -32,6 +29,9 @@ export const Goals = styled.div`
   grid-template-columns: repeat(auto-fit, 300px);
   grid-auto-rows: min-content;
   row-gap: 35px;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   ${setStylesToGoalsContainer}
 `;

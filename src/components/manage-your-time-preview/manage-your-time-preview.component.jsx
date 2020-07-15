@@ -9,7 +9,7 @@ import { createPortal } from 'react-dom';
 import CustomModal from '../custom-modal/custom-modal.component';
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
-export let isMobile = !window.matchMedia('(min-width:1401px)').matches;
+export let isMobile = window.matchMedia('(max-width:1400px)').matches;
 
 const ManageYourTimePreview = () => {
   const {

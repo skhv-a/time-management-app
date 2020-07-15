@@ -22,7 +22,11 @@ const Introduction = () => {
     >
       <Title>Be productive today!</Title>
       <StyledLogo />
-      <CustomButton startButton onClick={() => setClicked(!isClicked)}>
+      <CustomButton
+        startButton
+        isMobile={window.matchMedia('(max-width:375px)').matches}
+        onClick={() => setClicked(!isClicked)}
+      >
         Lets work
       </CustomButton>
     </IntroductionContainer>

@@ -21,7 +21,7 @@ export const Overlay = styled.div`
 `;
 
 export const ModalForm = styled.form`
-  min-width: 30vw;
+  min-width: 300px;
   min-height: 30vh;
 
   display: flex;
@@ -38,8 +38,17 @@ export const ModalForm = styled.form`
   padding: 50px 0;
 
   @media only screen and (max-width: 1400px) {
+    padding: 30px 0;
+
     max-width: 80vw;
-    max-height: 75vh;
+    min-height: fit-content;
+    max-height: 60vh;
+
+    button {
+      margin-top: 30px;
+    }
+  }
+  @media only screen and (max-width: 700px) {
   }
 
   ${scaleUpAnimation};

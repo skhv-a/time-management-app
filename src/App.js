@@ -6,14 +6,12 @@ import './App.css';
 
 import { HomepageProvider } from './contexts/homepage/homepage.context';
 
-function App() {
-  return (
-    <div className="App">
-      <HomepageProvider>
-        <Homepage />
-      </HomepageProvider>
-    </div>
-  );
-}
+const App = () => (
+  <div className="App">
+    <HomepageProvider>
+      <Homepage />
+    </HomepageProvider>
+  </div>
+);
 
 export default App;

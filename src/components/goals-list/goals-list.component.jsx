@@ -5,27 +5,38 @@ import GoalItem from '../goal-item/goal-item.component';
 
 import { ManageYourTimeContext } from '../../contexts/manage-your-time-preview/manage-your-time.context';
 
-const GoalsList = ({ goalsSrc, manageYourTimeSection }) => {
-  const {
-    state: { goals, searchedGoals },
-  } = useContext(ManageYourTimeContext);
+import { useQuery } from '@apollo/react-hooks';
 
-  return (
+import { GET_GOALS } from '../../apollo-gqls';
+import useHandleSearchInput from '../../custom-hooks/use-handle-search-input';
+
+import { Spinner } from '../spinner/spinner.styles';
+
+const GoalsList = ({ manageYourTimeSection, done }) => {
+  const {
+    state: { searchRequest },
+  } = useContext(ManageYourTimeContext);
+  const { searchedGoals } = useHandleSearchInput();
+  const { data } = useQuery(GET_GOALS);
+
+  return data ? (
     <Goals manageYourTimeSection={manageYourTimeSection}>
-      {goals.length ? (
+      {data.goals.results.length ? (
         //if goals don't have something display nothing for today
 
-        searchedGoals.length ? (
+        searchedGoals(data.goals.results, searchRequest).length ? (
           //if nothing has found from searchedGoals display "Nothing has found" message
 
-          searchedGoals.map((goal) => {
-            return goalsSrc.includes(goal) ? (
-              <GoalItem
-                key={goal.id}
-                manageYourTimeSection={manageYourTimeSection}
-                {...goal}
-              />
-            ) : null;
+          searchedGoals(data.goals.results, searchRequest).map((goal) => {
+            if (goal.isDone !== !done || manageYourTimeSection) {
+              return (
+                <GoalItem
+                  key={goal.id}
+                  manageYourTimeSection={manageYourTimeSection}
+                  {...goal}
+                />
+              );
+            }
           })
         ) : (
           <NothingMessage hasFound>Nothing has found</NothingMessage>
@@ -34,6 +45,8 @@ const GoalsList = ({ goalsSrc, manageYourTimeSection }) => {
         <NothingMessage>Nothing for today</NothingMessage>
       )}
     </Goals>
+  ) : (
+    <Spinner />
   );
 };
 

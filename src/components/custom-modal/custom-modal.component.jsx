@@ -5,8 +5,6 @@ import { CustomModalContainer, Overlay } from './custom-modal.styles';
 import {
   togglePreviewGoalModal,
   toggleAddGoalModal,
-  done,
-  remove,
 } from '../../reducers/manage-your-time/manage-your-time.actions';
 
 import AddModalGoal from '../add-goal-modal/add-goal-modal.component';
@@ -14,8 +12,12 @@ import AddModalGoal from '../add-goal-modal/add-goal-modal.component';
 import CustomGoalModal from '../custom-goal-modal/custom-goal-modal.component';
 
 import useHandleSubmit from '../../custom-hooks/use-handle-submit';
+import { useMutation } from '@apollo/react-hooks';
+import { UPDATE_GOAL, DELETE_GOAL, GET_GOALS } from '../../apollo-gqls';
 
 const CustomModal = ({ createGoalModal, goal }) => {
+  const [updateGoal] = useMutation(UPDATE_GOAL);
+  const [deleteGoal] = useMutation(DELETE_GOAL);
   const { handleSubmit: inProcessSubmit, dispatch } = useHandleSubmit(
     inProcessSubmitFunc,
     true
@@ -27,12 +29,21 @@ const CustomModal = ({ createGoalModal, goal }) => {
   );
 
   function inProcessSubmitFunc() {
-    goal.isDone = true;
-    dispatch(done(goal));
+    updateGoal({
+      variables: {
+        id: goal.id,
+        title: goal.title,
+        description: goal.description,
+        isDone: !goal.idDone,
+      },
+    });
   }
 
   function doneSubmitFunction() {
-    dispatch(remove(goal));
+    deleteGoal({
+      variables: { id: goal.id },
+      refetchQueries: [{ query: GET_GOALS }],
+    });
   }
 
   return (

@@ -11,7 +11,7 @@ const startButton = css`
 `;
 
 const modalButton = css`
-  height: 60px;
+  min-height: 60px;
 
   font-family: Roboto-Medium;
   font-size: 30px;
@@ -48,9 +48,28 @@ const save = css`
   }
 `;
 
+const mobile = css`
+  ${startButton};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 150px;
+
+  position: absolute;
+  bottom: 0;
+
+  border-radius: 25px 25px 0 0;
+
+  background-color: #242582;
+`;
+
 const setStyles = (props) => {
   switch (true) {
     case props.startButton:
+      if (props.isMobile) return mobile;
+
       return startButton;
     case props.add:
       return add;

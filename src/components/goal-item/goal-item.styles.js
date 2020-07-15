@@ -56,6 +56,7 @@ const setCustomGoalTitleStyles = ({ manageYourTimeSection }) => {
 
 export const InProcessGoalItem = styled.div`
   width: 80%;
+  max-height: 250px;
 
   display: flex;
   justify-self: center;
@@ -68,7 +69,7 @@ export const InProcessGoalItem = styled.div`
 
 export const CustomGoalTitle = styled.div`
   width: 100%;
-  min-height: 60px;
+  min-height: fit-content;
   background-color: #3b3dc5;
   border-radius: 26px 26px 0 0;
   padding: 10px 25px;

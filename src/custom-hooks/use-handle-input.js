@@ -1,16 +1,11 @@
 const { useState } = require('react');
 
-let id = 0;
-
 const useHandleInput = () => {
   const [isValid, setValid] = useState(false);
 
   const [goal, setGoal] = useState({
     title: '',
     description: '',
-    isDone: false,
-    isPinned: false,
-    id: id++,
   });
 
   const handleInputForm = (e) => {
