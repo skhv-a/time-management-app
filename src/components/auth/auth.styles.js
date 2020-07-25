@@ -165,6 +165,10 @@ export const StyledSpan = styled.span`
 export const SignInContainer = styled(container)`
   background-color: #3b3dc5;
 
+  button {
+    background-color: #ff932e;
+  }
+
   -webkit-animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   @-webkit-keyframes slide-right {
@@ -193,6 +197,9 @@ export const SignUpContainer = styled(container)`
   background-color: #ff932e;
   right: 0;
 
+  button {
+    background-color: #3b3dc5;
+  }
   -webkit-animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   @-webkit-keyframes slide-left {
