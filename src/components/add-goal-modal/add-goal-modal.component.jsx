@@ -47,7 +47,7 @@ const AddModalGoal = () => {
         add
         type="submit"
         disabled={!isValid}
-        style={{ margin: '0' }}
+        style={{ margin: '0' }} //
       >
         Add goal
       </CustomButton>
