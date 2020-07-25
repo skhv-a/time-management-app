@@ -16,11 +16,10 @@
     "styled-components": "^5.1.1"
   },
   "scripts": {
-    "start": "serve -s build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "react-scripts start"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,7 +43,6 @@
     "plugin:react-hooks/recommended"
   ],
   "engines": {
-    "npm": "6.14.4",
-    "node": "13.6.0"
+    "yarn": "1.x"
   }
 }
