@@ -2,14 +2,15 @@ import React from 'react';
 
 import { ModalForm } from '../custom-modal/custom-modal.styles';
 
-import { CustomInput } from '../custom-input/custom-input.styles';
+import { ModalField } from '../custom-input/custom-input.styles';
 import { CustomButton } from '../custom-button/custom-button.styles';
 
 import useHandleInput from '../../custom-hooks/use-handle-input';
 import useHandleSubmit from '../../custom-hooks/use-handle-submit';
 import { toggleAddGoalModal } from '../../reducers/manage-your-time/manage-your-time.actions';
-import { useMutation } from '@apollo/react-hooks';
-import { ADD_GOAL, GET_GOALS } from '../../apollo-gqls';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_GOAL } from '../../apollo-gqls/goal.gql';
+import { CURRENT_USER_DATA } from '../../apollo-gqls/user.gql';
 
 const AddModalGoal = () => {
   const {
@@ -19,15 +20,14 @@ const AddModalGoal = () => {
     isValid,
   } = useHandleInput();
   const { handleSubmit, dispatch } = useHandleSubmit(addGoalOnSubmit);
-
-  const [createGoal] = useMutation(ADD_GOAL);
+  const [addGoal] = useMutation(ADD_GOAL);
+  const { data } = useQuery(CURRENT_USER_DATA);
 
   function addGoalOnSubmit() {
     dispatch(toggleAddGoalModal());
-
-    createGoal({
-      variables: { ...goal },
-      refetchQueries: () => [{ query: GET_GOALS }],
+    addGoal({
+      variables: { id: data.viewer.id, ...goal },
+      refetchQueries: () => [{ query: CURRENT_USER_DATA }],
     });
   }
 
@@ -41,18 +41,14 @@ const AddModalGoal = () => {
         }
       }}
     >
-      <CustomInput
-        addModalInput
-        placeholder="Title"
-        onInput={handleTitleInput}
-        required
-      />
-      <CustomInput
-        addModalInput
-        placeholder="Description"
-        onInput={handleDescriptionInput}
-      />
-      <CustomButton add type="submit" disabled={!isValid}>
+      <ModalField placeholder="Title" onInput={handleTitleInput} required />
+      <ModalField placeholder="Description" onInput={handleDescriptionInput} />
+      <CustomButton
+        add
+        type="submit"
+        disabled={!isValid}
+        style={{ margin: '0' }}
+      >
         Add goal
       </CustomButton>
     </ModalForm>

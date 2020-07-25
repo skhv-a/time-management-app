@@ -15,6 +15,7 @@ const ManageYourTimePreview = () => {
   const {
     state: { previewGoalModalIsHidden, currentGoal },
   } = useContext(ManageYourTimeContext);
+
   return (
     <Container>
       <TimeManageSection />

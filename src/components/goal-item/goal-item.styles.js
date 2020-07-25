@@ -23,14 +23,10 @@ const setBorder = ({ makeRound }) => {
 const setCustomGoalTitleStyles = ({ manageYourTimeSection }) => {
   if (manageYourTimeSection) {
     return css`
-      width: 80%;
-
       justify-content: flex-start;
-      align-self: center;
 
       background-color: #272187;
       border-radius: 26px;
-      margin: 25px 0;
 
       font-size: 22px;
 
@@ -43,6 +39,10 @@ const setCustomGoalTitleStyles = ({ manageYourTimeSection }) => {
 
       &:first-child {
         margin-top: 50px;
+      }
+
+      &:last-child {
+        margin-bottom: 50px;
       }
 
       @media only screen and (min-width: 1472px) {

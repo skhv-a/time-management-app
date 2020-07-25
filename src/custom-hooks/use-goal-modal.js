@@ -1,7 +1,7 @@
 import { CustomButton } from '../components/custom-button/custom-button.styles';
 import React from 'react';
-import { UPDATE_GOAL } from '../apollo-gqls';
-import { useMutation } from '@apollo/react-hooks';
+import { UPDATE_GOAL } from '../apollo-gqls/goal.gql';
+import { useMutation } from '@apollo/client';
 
 const { useState } = require('react');
 

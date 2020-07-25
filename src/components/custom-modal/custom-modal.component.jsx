@@ -12,17 +12,22 @@ import AddModalGoal from '../add-goal-modal/add-goal-modal.component';
 import CustomGoalModal from '../custom-goal-modal/custom-goal-modal.component';
 
 import useHandleSubmit from '../../custom-hooks/use-handle-submit';
-import { useMutation } from '@apollo/react-hooks';
-import { UPDATE_GOAL, DELETE_GOAL, GET_GOALS } from '../../apollo-gqls';
+import { useMutation } from '@apollo/client';
+import {
+  UPDATE_GOAL,
+  DELETE_GOAL,
+  // GET_GOALS,
+} from '../../apollo-gqls/goal.gql';
+import { CURRENT_USER_DATA } from '../../apollo-gqls/user.gql';
 
 const CustomModal = ({ createGoalModal, goal }) => {
   const [updateGoal] = useMutation(UPDATE_GOAL);
   const [deleteGoal] = useMutation(DELETE_GOAL);
+
   const { handleSubmit: inProcessSubmit, dispatch } = useHandleSubmit(
     inProcessSubmitFunc,
     true
   );
-
   const { handleSubmit: doneSubmit } = useHandleSubmit(
     doneSubmitFunction,
     true
@@ -38,11 +43,10 @@ const CustomModal = ({ createGoalModal, goal }) => {
       },
     });
   }
-
   function doneSubmitFunction() {
     deleteGoal({
       variables: { id: goal.id },
-      refetchQueries: [{ query: GET_GOALS }],
+      refetchQueries: [{ query: CURRENT_USER_DATA }],
     });
   }
 

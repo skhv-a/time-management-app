@@ -1,5 +1,5 @@
 export const INITIAL_STATE = {
-  canRender: false, //!SET TO false,
+  canRender: localStorage.getItem('sessionToken') ? true : false,
 };
 
 export default INITIAL_STATE;

@@ -1,25 +1,15 @@
-import styled from 'styled-components';
-import { setDoneStyles } from '../goal-item/goal-item.styles';
+import styled, { css } from 'styled-components';
+import TextareaAutosize from 'react-autosize-textarea';
 
-export const GoalItemModalContainer = styled.div`
-  width: 80%;
-  overflow: scroll;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @media only screen and (max-width: 700px) {
-    border-radius: 25px;
-  }
-`;
-
-export const ModalTitle = styled.div`
-  min-width: 240px;
+const modalField = css`
+  width: 320px;
+  min-height: fit-content;
   font-family: Roboto-Regular;
 
   display: inline-flex;
 
   align-items: center;
+
   word-break: break-word;
 
   font-size: 25.5px;
@@ -29,58 +19,47 @@ export const ModalTitle = styled.div`
 
   border-radius: 25px;
 
-  padding: 0 25px;
-  padding-left: 0;
+  padding: 15px;
 
   position: relative;
 
-  @media only screen and (max-width: 700px) {
-    border-radius: 0 0 26px 26px;
+  @media only screen and (max-width: 1400px) {
+    border-radius: 25px;
     padding: 15px;
-    overflow: visible;
-    margin-top: 100px;
-  }
-
-  &:before {
-    font-family: RobotoCondensed-Light;
-
-    display: block;
-    min-width: 60px;
-
-    margin-right: 25px;
-    padding: 15px;
-
-    background-color: #3b3dc5;
-    color: white;
-    ${setDoneStyles};
-    border-radius: 26px 0 0 26px;
-
-    content: 'Title:';
-
-    @media only screen and (max-width: 700px) {
-      width: 100%;
-
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-
-      margin: 0;
-      padding: 15px 0;
-
-      border-radius: 26px 26px 0 0;
-
-      text-align: center;
-    }
+    width: 95%;
   }
 `;
 
-export const ModalDescription = styled(ModalTitle)`
+const descriptionFieldStyles = css`
   margin-top: 30px;
+  padding-bottom: 40px;
+`;
 
-  &:before {
-    content: 'Desc:';
-    @media only screen and (max-width: 700px) {
-      content: 'Description:';
-    }
+export const GoalItemModalContainer = styled.div`
+  width: 80%;
+  overflow: scroll;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media only screen and (max-width: 1400px) {
+    border-radius: 25px;
   }
+`;
+
+export const ModalTitle = styled.div`
+  ${modalField}
+`;
+
+export const ModalDescription = styled(ModalTitle)`
+  ${descriptionFieldStyles}
+`;
+
+export const Editor = styled(TextareaAutosize)`
+  ${modalField}
+  outline: none;
+  border: none;
+  resize: none;
+  ${({ description }) => (description ? descriptionFieldStyles : null)}
 `;

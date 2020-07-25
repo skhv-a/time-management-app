@@ -3,9 +3,9 @@ import {
   GoalItemModalContainer,
   ModalTitle,
   ModalDescription,
+  Editor,
 } from './goal-item-modal.styles';
 import { InputEditor } from '../input-editor/input-editor.styles';
-import { CustomInput } from '../custom-input/custom-input.styles';
 import useGoalModal from '../../custom-hooks/use-goal-modal';
 
 const GoalItemModal = ({ goal: { title, description, isDone }, goal }) => {
@@ -36,10 +36,9 @@ const GoalItemModal = ({ goal: { title, description, isDone }, goal }) => {
             ) : null}
           </ModalTitle>
         ) : (
-          <CustomInput
+          <Editor
             defaultValue={title}
             onInput={(e) => setTitleInputValue(e.target.value)}
-            editInput
           />
         )}
 
@@ -57,10 +56,10 @@ const GoalItemModal = ({ goal: { title, description, isDone }, goal }) => {
               ) : null}
             </ModalDescription>
           ) : (
-            <CustomInput
+            <Editor
               defaultValue={description}
               onInput={(e) => setDescriptionInputValue(e.target.value)}
-              editInput
+              description
             />
           )
         ) : null}

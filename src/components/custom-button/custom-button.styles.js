@@ -80,7 +80,7 @@ const setStyles = (props) => {
     case props.save:
       return save;
     default:
-      return null;
+      return modalButton;
   }
 };
 

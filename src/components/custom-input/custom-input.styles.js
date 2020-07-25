@@ -1,61 +1,37 @@
 import styled, { css } from 'styled-components';
+import TextareaAutosize from 'react-autosize-textarea';
 
-const searchInput = css`
-  max-width: 400px;
-  background-color: white;
-  color: #595959;
-`;
-
-const addModalInput = css`
-  width: 80%;
-  color: #404040;
-  background-color: #d5d5d5;
-  margin-bottom: 50px;
-  overflow-wrap: break-word;
-`;
-
-const editInput = css`
-  ${addModalInput}
-  font-family: Roboto-Regular;
-  padding: 30px 25px;
-  &:before {
-    font-family: RobotoCondensed-Light;
-
-    display: block;
-    width: 85px;
-
-    margin-right: 25px;
-    padding: 15px;
-
-    background-color: #3b3dc5;
-    color: white;
-
-    content: 'Title:';
-  }
-`;
-
-const setStyles = (props) => {
-  switch (true) {
-    case props.searchInput:
-      return searchInput;
-    case props.addModalInput:
-      return addModalInput;
-    case props.editInput:
-      return editInput;
-    default:
-      return null;
-  }
-};
-
-export const CustomInput = styled.input`
+const customInput = css`
   height: 30px;
   outline: none;
   border-radius: 25px;
-  padding: 25px;
+  padding: 15px;
   border: none;
+  resize: none;
 
   font-family: RobotoCondensed-Light;
   font-size: 25.5px;
   text-align: left;
-  ${setStyles};
+`;
+
+export const StyledInput = styled.input`
+  ${customInput}
+  max-width: 400px;
+  background-color: white;
+  color: #595959;
+  padding: 25px;
+`;
+
+export const ModalField = styled(TextareaAutosize)`
+  ${customInput}
+  width: 80%;
+  color: #404040;
+  background-color: #d5d5d5;
+  margin-bottom: 50px;
+
+  overflow-wrap: break-word;
+
+  outline: none;
+  border: none;
+  resize: none;
 `;
