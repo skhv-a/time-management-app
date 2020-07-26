@@ -3,11 +3,10 @@ import { ReactComponent as LogOutIcoSvg } from '../../assets/logout.svg';
 
 export const GoalsForTodayContainer = styled.div`
   width: 100%;
-  height: fit-content;
+  height: 100vh;
   display: flex;
   flex: 1;
   flex-direction: column;
-  /* overflow-y: scroll; */
 `;
 
 export const GoalsForTodayHeader = styled.div`
