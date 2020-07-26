@@ -4,6 +4,26 @@
   box-sizing: border-box;
   overflow: hidden;
   scroll-behavior: smooth;
+
+  @font-face {
+    font-family: Roboto-Regular;
+    src: url('./assets/fonts/roboto/Roboto-Regular.ttf');
+  }
+
+  @font-face {
+    font-family: Roboto-Medium;
+    src: url('./assets/fonts/roboto/Roboto-Medium.ttf');
+  }
+
+  @font-face {
+    font-family: RobotoCondensed-Light;
+    src: url('./assets/fonts/roboto-condensed/RobotoCondensed-Light.ttf');
+  }
+
+  @font-face {
+    font-family: RobotoCondensed-Regular;
+    src: url('./assets/fonts/roboto-condensed/RobotoCondensed-Regular.ttf');
+  }
 }
 
 body {

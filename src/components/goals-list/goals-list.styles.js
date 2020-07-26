@@ -18,13 +18,13 @@ const setStylesToGoalsContainer = ({ manageYourTimeSection }) => {
 export const Goals = styled.div`
   width: 95%;
   height: calc(100% - 100px - 5vh);
+  margin: 0 auto;
   margin-top: 5vh;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 300px);
   grid-auto-rows: min-content;
   row-gap: 35px;
-  /* background-color: red; */
 
   overflow-x: hidden;
   overflow-y: scroll;
