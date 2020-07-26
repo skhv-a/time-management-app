@@ -7,7 +7,7 @@ export const GoalsForTodayContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 `;
 
 export const GoalsForTodayHeader = styled.div`
