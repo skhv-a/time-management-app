@@ -9,6 +9,8 @@ export const AddGoalContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 0;
   @media only screen and (max-width: 700px) {
     border-radius: 15px 15px 0 0;
   }

@@ -7,6 +7,7 @@ export const GoalsForTodayContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+  position: relative;
 `;
 
 export const GoalsForTodayHeader = styled.div`
