@@ -8,6 +8,7 @@ export const GoalsForTodayContainer = styled.div`
   flex: 1;
   flex-direction: column;
   overflow-y: scroll;
+  position: relative;
 `;
 
 export const GoalsForTodayHeader = styled.div`

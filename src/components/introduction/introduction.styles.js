@@ -18,6 +18,11 @@ export const Title = styled.span`
     margin: 50px auto 0 auto;
     overflow: visible;
   }
+
+  @font-face {
+    font-family: Roboto-Medium;
+    src: url('./assets/fonts/roboto/Roboto-Medium.ttf');
+  }
 `;
 
 export const StyledLogo = styled(Logo)`
