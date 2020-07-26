@@ -19,10 +19,10 @@ export const Title = styled.span`
     overflow: visible;
   }
 
-  @font-face {
+  /* @font-face {
     font-family: Roboto-Medium;
     src: url('./assets/fonts/roboto/Roboto-Medium.ttf');
-  }
+  } */
 `;
 
 export const StyledLogo = styled(Logo)`
