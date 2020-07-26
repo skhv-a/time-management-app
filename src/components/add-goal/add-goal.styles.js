@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ReactComponent as addButtonSVG } from '../../assets/add.svg';
 
 export const AddGoalContainer = styled.div`
+  position: absolute;
   bottom: 0;
   width: 100%;
   min-height: 80px;
@@ -10,7 +11,7 @@ export const AddGoalContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  align-self: flex-end;
+  /* align-self: flex-end; */
   @media only screen and (max-width: 700px) {
     border-radius: 15px 15px 0 0;
   }
