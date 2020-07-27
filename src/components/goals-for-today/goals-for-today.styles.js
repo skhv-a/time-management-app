@@ -4,9 +4,6 @@ import { ReactComponent as LogOutIcoSvg } from '../../assets/logout.svg';
 export const GoalsForTodayContainer = styled.div`
   width: 100%;
   height: 100vh;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
   position: relative;
 `;
 

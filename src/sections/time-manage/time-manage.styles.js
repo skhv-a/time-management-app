@@ -6,7 +6,6 @@ export const TimeManageSectionContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  position: absolute;
 
   ${slideFromBottonAnimation}
   @media only screen and (max-width: 1400px) {
