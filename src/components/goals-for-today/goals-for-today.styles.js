@@ -5,6 +5,10 @@ export const GoalsForTodayContainer = styled.div`
   width: 100%;
   height: 100vh;
   position: relative;
+
+  @media only screen and (max-width: 1400px) {
+    overflow: visible;
+  }
 `;
 
 export const GoalsForTodayHeader = styled.div`
